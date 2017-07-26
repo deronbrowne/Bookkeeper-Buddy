@@ -36,7 +36,14 @@ class inventory:
         print self.subtotals[x]
         
     def edit_item(self):
-        self.view_item()
+        print self.name
+        x=self.name.index(raw_input('What would you like to edit?\n'
+                                   '\n'))
+        print self.name[x]
+        print self.cost_per_piece[x]
+        print self.num_pieces[x]
+        print self.subtotals[x]
+        
         edit=raw_input('What would you like to change?\n'
                        'a "Name"\n'
                        'a "Quantity"\n'
@@ -58,6 +65,7 @@ class inventory:
             print self.name
     
     def delete_item(self):
+        print self.name
         x=self.name.index(raw_input('What would you like to delete?\n'
                                    '\n'))
         print self.name[x]
