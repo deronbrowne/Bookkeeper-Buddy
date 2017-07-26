@@ -39,6 +39,7 @@ while state=='on':
         query=raw_input('What would you like to do?\n'
         '"Create" an inventory\n'
         '"Edit" the inventory\n'
+        '"Add" an item\n'
         '"View inventory"\n'
         '"View item"\n'
         '"Delete" an inventory item\n'
@@ -56,22 +57,7 @@ while state=='on':
             query=raw_input('What would you like to do?\n'
             '"Create" an inventory\n'
             '"Edit" the inventory\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Quit"?\n'
-            '\n')
-                
-        elif query=='Add':
-            Save = 'keep adding'
-            while Save=='keep adding':
-                    a=inventory()
-                    inventory.add_item(a)
-                    Save=raw_input('Would you like to save your entries or keep adding? Save/keep adding ')
-            del a
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
+            '"Add" an item\n'
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
@@ -99,12 +85,32 @@ while state=='on':
                 'Would you like to:\n'
                 '"Save"\n'
                 'or"Keep editing"\n')
-         
-        elif query=='View inventory':
-            print inventory.name
+                        
+        elif query=='Add':
+            Save = 'keep adding'
+            while Save=='keep adding':
+                    a=inventory()
+                    inventory.add_item(a)
+                    Save=raw_input('Would you like to save your entries or keep adding? Save/keep adding ')
+            del a
             query=raw_input('What would you like to do?\n'
             '"Create" an inventory\n'
             '"Edit" the inventory\n'
+            '"Add" an item\n'
+            '"View inventory"\n'
+            '"View item"\n'
+            '"Delete" an inventory item\n'
+            '"Quit"?\n'
+            '\n')
+            
+        elif query=='View inventory':
+            x=len(inventory.name)-1
+            for i in range(1,x):
+              print inventory.name[x], inventory.item_count[x], inventory.item_cost[x], inventory.subtotals[x]
+            query=raw_input('What would you like to do?\n'
+            '"Create" an inventory\n'
+            '"Edit" the inventory\n'
+            '"Add" an item\n'
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
