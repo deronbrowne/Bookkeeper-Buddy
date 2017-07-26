@@ -68,23 +68,26 @@ class inventory:
         print self.name
         x=self.name.index(raw_input('What would you like to delete?\n'
                                    '\n'))
-        print self.name[x]
-        print self.cost_per_piece[x]
-        print self.num_pieces[x]
-        print self.subtotals[x]
-        check=raw_input('Are you sure? Yes/No\n'
-                       '\n')
-        if check=='Yes':
-            del self.name[index]
-            del self.cost_per_piece[index]
-            del self.num_pieces[index]
-            del self.subtotal[index]
-        elif check='No':
+        if x in self.name:
             print self.name[x]
             print self.cost_per_piece[x]
             print self.num_pieces[x]
-            print self.subtotals[x]         
-            
+            print self.subtotals[x]
+            check=raw_input('Are you sure? Yes/No\n'
+                           '\n')
+            if check=='Yes':
+                del self.name[index]
+                del self.cost_per_piece[index]
+                del self.num_pieces[index]
+                del self.subtotal[index]
+            elif check='No':
+                print self.name[x]
+                print self.cost_per_piece[x]
+                print self.num_pieces[x]
+                print self.subtotals[x]
+        else:
+            print "I'm sorry, that item isn't in your inventory"
+            print self.name          
         
     def get_inventory_value(self):
         print sum(self.subtotals)
