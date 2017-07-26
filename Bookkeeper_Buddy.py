@@ -50,7 +50,8 @@ while state=='on':
             while Save=='keep adding':
                     a=inventory()
                     inventory.add_item(a)
-                    Save=raw_input('Would you like to save your inventory or keep adding? Save/keep adding ')
+                    Save=raw_input('Would you like to save your inventory or keep adding? Save/keep adding\n'
+                                  '\n')
             del a
             query=raw_input('What would you like to do?\n'
             '"Create" an inventory\n'
