@@ -1,24 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 21 21:24:08 2017
-
-@author: Deron
-
-Title: Bookkeeper Buddy
-
-Description:    This project is aimed at small businesses who want a simple and 
-                easy way to track inventory, how new projects affect the inventory
-                and to keep track of how and when to restock. You can also set goals
-                to ensure that targets are met.                
-"""
-
-#class restock:
-    
-
-
-#class set_goal:
-
-
 state='on'
 execfile('Inventory_Class.py')
 execfile('My_Projects_Class.py')
@@ -29,9 +8,10 @@ while state=='on':
     
     action=raw_input('Choose one of the following options:\n'
     '"Inventory"\n'
-    '"Project"\n'
+    '"Projects"\n'
     '"Restock"\n'
     '"Set Goal"\n'
+    '"Quit"\n'
     '\n')
 
     if action=='Inventory':
@@ -43,7 +23,7 @@ while state=='on':
         '"View inventory"\n'
         '"View item"\n'
         '"Delete" an inventory item\n'
-        '"Quit"?\n'
+        '"Done"?\n'
         '\n')
                       
         if query=='Create':
@@ -61,7 +41,7 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')
         
         elif query=='Edit':
@@ -78,7 +58,7 @@ while state=='on':
                 '"View inventory list"\n'
                 '"View item info"\n'
                 '"Delete" an inventory item\n'
-                '"Quit"?\n'
+                '"Done"?\n'
                 '\n')
             else:
                 Save=raw_input('Try again.\n'
@@ -100,7 +80,7 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')
             
         elif query=='View inventory':
@@ -114,7 +94,7 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')
                  
         elif query=='View item':
@@ -133,7 +113,7 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')
                 
         elif query=='Delete':
@@ -152,13 +132,13 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')  
         
-        elif query=='Quit':
+        elif query=='Done':
             action=raw_input('Choose one of the following options:\n'
             '"Inventory"\n'
-            '"Project"\n'
+            '"Projects"\n'
             '"Restock"\n'
             '"Set Goal"\n'
             '\n')
@@ -189,8 +169,11 @@ while state=='on':
         if query=='Create':
             projects.append(raw_input('Name your project! '))
             instances.append(my_projects())
+            a=my_projects()
+            my_projects.add_item(a)
             query=raw_input('What would you like to do?\n'
             '"Create" a project\n'
+            '"Add" to a project\n'
             '"Edit" a project\n'
             '"View" a project\n'
             '"Delete" a project\n'
@@ -208,13 +191,13 @@ while state=='on':
             '\n')
             
             if sub_query== 'Add':
-                
+               print 'Add' 
             elif sub_query== 'Add to overheads':
-                
+               print 'Add' 
             elif sub_query== 'Log hours':
-                
+               print 'Add' 
             elif sub_query== 'Set profit':
-                
+               print 'Add' 
             elif sub_query== 'Quit':
                 query=raw_input('What would you like to do?\n'
                 '"Create" a project\n'
@@ -225,13 +208,13 @@ while state=='on':
                 '\n')
                 
             else:
-            print "Sorry I didnt get that. Try again."
-            sub_query=raw_input('Would you like to:\n'
-            '"Add item"?\n'
-            '"Add to overheads"?\n'
-            '"Log hours"?\n'
-            '"Set profit"?\n'
-            '\n')
+                print "Sorry I didnt get that. Try again."
+                sub_query=raw_input('Would you like to:\n'
+                '"Add item"?\n'
+                '"Add to overheads"?\n'
+                '"Log hours"?\n'
+                '"Set profit"?\n'
+                '\n')
             
         while query=='View':
             sub_query=raw_input('Would you like to:\n'
@@ -244,14 +227,19 @@ while state=='on':
             '\n')
             
             if sub_query== 'View item':
+                print 'Add'
                 
             elif sub_query== 'View overheads':
+                print 'Add'
                 
             elif sub_query== 'View hours':
+                print 'Add'
                 
             elif sub_query== 'View profit':
+                print 'Add'
                 
             elif sub_query== 'Project total':
+                print 'Add'
                 
             elif sub_query== 'Quit':
                 query=raw_input('What would you like to do?\n'
@@ -282,12 +270,16 @@ while state=='on':
             '\n')
             
             if sub_query== 'Delete item':
+                print 'Add'
                 
             elif sub_query== 'Delete overheads':
+                print 'Add'
                 
             elif sub_query== 'Delete hours':
+                print 'Add'
                 
             elif sub_query== 'Delete profit':
+                print 'Add'
                                
             elif sub_query== 'Quit':
                 query=raw_input('What would you like to do?\n'
@@ -309,32 +301,43 @@ while state=='on':
                 '\n')              
             
                
-        if query=='Save and Exit':
+        if query=='Exit without saving':
+            print "Write code to undo previous actions"
             action=raw_input('Choose one of the following options:\n'
             '"Inventory"\n'
             '"Project"\n'
             '"Restock"\n'
             '"Set Goal"\n'
+            '"Quit"\n'
+            '\n')        
+        
+        elif query=='Save and Exit':
+            action=raw_input('Choose one of the following options:\n'
+            '"Inventory"\n'
+            '"Project"\n'
+            '"Restock"\n'
+            '"Set Goal"\n'
+            '"Quit"\n'
             '\n')
                 
         else:
             print "Sorry I didnt get that. Try again."
             query=raw_input('What would you like to do?\n'
             '"Create" a project\n'
+            '"Add" to a project\n'
             '"Edit" a project\n'
             '"View" a project\n'
             '"Delete" a project\n'
+            '"Exit without saving"\n'
             '"Save and Exit"\n'
-            '\n')              
+            '\n')            
                         
     elif action=='Restock':
         print 'Coming soon!'
     
     elif action=='Set Goal':
         print 'Coming soon!'
-
-print 'Goodbye'
-state='off'
-
         
-
+    elif action=='Quit':
+        print 'Goodbye'
+        state='off'
