@@ -155,7 +155,30 @@ while state=='on':
             '\n')     
     
         
-    elif action=='Projects':
+ action=raw_input('Choose one of the following options:\n'
+'"Inventory"\n'
+'"Projects"\n'
+'"Restock"\n'
+'"Set Goal"\n'
+'"Quit"\n'
+'\n')
+
+elif action=='Projects':
+    query=raw_input('What would you like to do?\n'
+    '"Create" a project\n'
+    '"Add" to a project\n'
+    '"Edit" a project\n'
+    '"View" a project\n'
+    '"Delete" a project\n'
+    '"Exit without saving"\n'
+    '"Save and Exit"\n'
+    '\n')
+    
+    while query=='Create':
+        projects.append(raw_input('Name your project! '))
+        instances.append(my_projects())
+        x=len(instances)-1
+        instances[x].add_item()
         query=raw_input('What would you like to do?\n'
         '"Create" a project\n'
         '"Add" to a project\n'
@@ -165,21 +188,6 @@ while state=='on':
         '"Exit without saving"\n'
         '"Save and Exit"\n'
         '\n')
-        
-        if query=='Create':
-            projects.append(raw_input('Name your project! '))
-            instances.append(my_projects())
-            a=my_projects()
-            my_projects.add_item(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" a project\n'
-            '"Add" to a project\n'
-            '"Edit" a project\n'
-            '"View" a project\n'
-            '"Delete" a project\n'
-            '"Exit without saving"\n'
-            '"Save and Exit"\n'
-            '\n')
             
         while query=='Edit':
             sub_query=raw_input('Would you like to:\n'
