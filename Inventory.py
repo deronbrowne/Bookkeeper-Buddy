@@ -25,38 +25,69 @@ class inventory:
         x=len(self.cost_per_piece)
         c=self.cost_per_piece[x-1]
         self.subtotals.append(b*c)
+          
+    def view_item(self):
+        print self.name
+        x=self.name.index(raw_input('What would you like to edit?\n'
+                                   '\n'))
+        print self.name[x]
+        print self.cost_per_piece[x]
+        print self.num_pieces[x]
+        print self.subtotals[x]
         
-    def edit_item(self,index):
-        print self.name[index]
-        print self.cost_per_piece[index]
-        print self.num_pieces[index]
-        print self.subtotals[index]
-        edit=raw_input('Would you like to change a "quantity" or a "price"? ')
-        if edit=='quantity':
-            #how do I edit a list that is defined within a class?
-            del self.num_pieces[index]
-            self.num_pieces.insert(index,float(raw_input('New quantity: ')))
-            self.subtotals[x]=inventory.num_pieces[index]*inventory.cost_per_piece[index]
+    def edit_item(self):
+        print self.name
+        x=self.name.index(raw_input('What would you like to edit?\n'
+                                   '\n'))
+        print self.name[x]
+        print self.cost_per_piece[x]
+        print self.num_pieces[x]
+        print self.subtotals[x]
+        
+        edit=raw_input('What would you like to change?\n'
+                       'a "Name"\n'
+                       'a "Quantity"\n'
+                       'or a "Price"?\n'
+                       '\n')
+        if edit=='Name':
+            self.name[x]=raw_input('What are you changing the name to?\n'
+                                  '\n')
+        elif edit=='Quantity':
+            self.num_pieces[x]=float(raw_input('What is the new quantity?\n'
+                                  '\n'))
+            self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
         elif edit=='price':
-            #how do I edit a list that is defined within a class?
-            del self.cost_per_piece[index]
-            self.cost_per_piece.insert(index,float(raw_input('New cost: ')))
-            self.subtotals[index]=self.num_pieces[index]*self.cost_per_piece[index]
+            self.cost_per_piece[x]=float(raw_input('What is the new price?\n'
+                                  '\n'))
+            self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
         else:
             print "I'm sorry, that item isn't in your inventory"
             print self.name
     
-    def view_item(self,index):
-        print self.name[index]
-        print self.cost_per_piece[index]
-        print self.num_pieces[index]
-        print self.subtotal[index]
-        
-    def delete_item(self,index):
-        del self.name[index]
-        del self.cost_per_piece[index]
-        del self.num_pieces[index]
-        del self.subtotal[index]
+    def delete_item(self):
+        print self.name
+        x=self.name.index(raw_input('What would you like to delete?\n'
+                                   '\n'))
+        if x in self.name:
+            print self.name[x]
+            print self.cost_per_piece[x]
+            print self.num_pieces[x]
+            print self.subtotals[x]
+            check=raw_input('Are you sure? Yes/No\n'
+                           '\n')
+            if check=='Yes':
+                del self.name[index]
+                del self.cost_per_piece[index]
+                del self.num_pieces[index]
+                del self.subtotal[index]
+            elif check='No':
+                print self.name[x]
+                print self.cost_per_piece[x]
+                print self.num_pieces[x]
+                print self.subtotals[x]
+        else:
+            print "I'm sorry, that item isn't in your inventory"
+            print self.name          
         
     def get_inventory_value(self):
         print sum(self.subtotals)
