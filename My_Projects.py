@@ -33,13 +33,13 @@ class my_projects:
             print self.items[index], self.item_cost[index], self.item_count[index], self.item_subtotal[index]
         print 'Subtotal for this project = $'+sum(self.item_subtotal)
         
-    def delete_hours(self):
+    def delete_items(self):
         self.view_hours()
         x=raw_input('What date would you like to delete?\n')
-        del self.items.index(x)
-        del self.item_cost.index(x)
-        del self.item_count.index(x)
-        del self.item_subtotal.index(x)        
+        del self.items[x]
+        del self.item_cost[x]
+        del self.item_count[x]
+        del self.item_subtotal[x]        
         
     def add_overhead_item(self):
         name=raw_input('What are you adding?\n')
@@ -56,8 +56,8 @@ class my_projects:
     def delete_overhead(self):
         self.delete_overhead()
         x=raw_input('What date would you like to delete?\n')
-        del self.overheads.index(x)
-        del self.overhead_cost.index(x)
+        del self.overheads[x]
+        del self.overhead_cost[x]
             
     def log_hours(self):
         self.day.append(raw_input('What date are you adding hours for?\n'))
@@ -75,9 +75,9 @@ class my_projects:
     def delete_hours(self):
         self.view_hours()
         x=raw_input('What date would you like to delete?\n')
-        del self.day.index(x)
-        del self.time.index(x)
-        del self.salary.index(x)
+        del self.day[x]
+        del self.time[x]
+        del self.salary[x]
             
     def set_profit(self):
         self.percent_profit = float(('How much profit would you like to make? %')/100)
@@ -89,6 +89,6 @@ class my_projects:
     def calc_project_total(self):
         print projects
         x=raw_input('Which project are you inquiring about?\n')
-        del project_totals.index(x)
-        project_totals.insert(x,(sum(self.item_subtotal)+sum(self.overhead_cost)+sum(self.salary)+self.profit))
-        print 'Sell this project for $'+project_totals(x)
+        del project_total[x]
+        project_total.insert(x,(sum(self.item_subtotal)+sum(self.overhead_cost)+sum(self.salary)+self.profit))
+        print 'Sell this project for $'+project_total(x)
