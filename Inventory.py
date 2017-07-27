@@ -76,11 +76,11 @@ class inventory:
             check=raw_input('Are you sure? Yes/No\n'
                            '\n')
             if check=='Yes':
-                del self.name[index]
-                del self.cost_per_piece[index]
-                del self.num_pieces[index]
-                del self.subtotal[index]
-            elif check='No':
+                del self.name[x]
+                del self.cost_per_piece[x]
+                del self.num_pieces[x]
+                del self.subtotal[x]
+            elif check=='No':
                 print self.name[x]
                 print self.cost_per_piece[x]
                 print self.num_pieces[x]
