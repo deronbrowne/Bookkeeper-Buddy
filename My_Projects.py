@@ -17,15 +17,21 @@ class my_projects:
     profit=[]
     
     def add_item(self):
-        name=raw_input('What are you adding?\n')
-        cost=raw_input('How much does it cost?\n')
-        count=raw_input('How many are you adding?\n')
-        self.items.append(name)
-        self.item_cost.append(cost)
-        self.item_count.append(count)
-        a=float(self.item_cost[len(self.item_cost)-1])
-        b=float(self.item_count[len(self.item_count)-1])
-        self.item_subtotal.append(a*b)
+        question='Add another'
+        while question=='Add another':
+            name=raw_input('What are you adding?\n')
+            cost=raw_input('How much does it cost?\n')
+            count=raw_input('How many are you adding?\n')
+            self.items.append(name)
+            self.item_cost.append(cost)
+            self.item_count.append(count)
+            a=float(self.item_cost[len(self.item_cost)-1])
+            b=float(self.item_count[len(self.item_count)-1])
+            self.item_subtotal.append(a*b)
+            question=raw_input('Would you like to:\n'
+            '"Save"\n'
+            'or"Add another\n'
+            '\n')
         
     def view_items(self):
         x=len(self.items)-1
