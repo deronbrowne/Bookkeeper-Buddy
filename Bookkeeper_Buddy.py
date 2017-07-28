@@ -1,6 +1,4 @@
 state='on'
-execfile('Inventory_Class.py')
-execfile('My_Projects_Class.py')
 
 print 'Welcome to "Bookkeeper Buddy"!'
 
