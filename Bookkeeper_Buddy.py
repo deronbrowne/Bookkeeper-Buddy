@@ -163,22 +163,7 @@ while state=='on':
 '"Quit"\n'
 '\n')
 
-elif action=='Projects':
-    query=raw_input('What would you like to do?\n'
-    '"Create" a project\n'
-    '"Add" to a project\n'
-    '"Edit" a project\n'
-    '"View" a project\n'
-    '"Delete" a project\n'
-    '"Exit without saving"\n'
-    '"Save and Exit"\n'
-    '\n')
-    
-    while query=='Create':
-        projects.append(raw_input('Name your project! '))
-        instances.append(my_projects())
-        x=len(instances)-1
-        instances[x].add_item()
+    elif action=='Projects':
         query=raw_input('What would you like to do?\n'
         '"Create" a project\n'
         '"Add" to a project\n'
@@ -188,148 +173,12 @@ elif action=='Projects':
         '"Exit without saving"\n'
         '"Save and Exit"\n'
         '\n')
-            
-        while query=='Edit':
-            sub_query=raw_input('Would you like to:\n'
-            '"Add item"?\n'
-            '"Add to overheads"?\n'
-            '"Log hours"?\n'
-            '"Set profit"?\n'
-            '"Quit"\n'
-            '\n')
-            
-            if sub_query== 'Add':
-               print 'Add' 
-            elif sub_query== 'Add to overheads':
-               print 'Add' 
-            elif sub_query== 'Log hours':
-               print 'Add' 
-            elif sub_query== 'Set profit':
-               print 'Add' 
-            elif sub_query== 'Quit':
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')
-                
-            else:
-                print "Sorry I didnt get that. Try again."
-                sub_query=raw_input('Would you like to:\n'
-                '"Add item"?\n'
-                '"Add to overheads"?\n'
-                '"Log hours"?\n'
-                '"Set profit"?\n'
-                '\n')
-            
-        while query=='View':
-            sub_query=raw_input('Would you like to:\n'
-            '"View item"?\n'
-            '"View overheads"?\n'
-            '"View hours"?\n'
-            '"View profit"?\n'
-            'View the "Project total"?\n'
-            '"Quit"\n'
-            '\n')
-            
-            if sub_query== 'View item':
-                print 'Add'
-                
-            elif sub_query== 'View overheads':
-                print 'Add'
-                
-            elif sub_query== 'View hours':
-                print 'Add'
-                
-            elif sub_query== 'View profit':
-                print 'Add'
-                
-            elif sub_query== 'Project total':
-                print 'Add'
-                
-            elif sub_query== 'Quit':
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')
-                
-            else:
-                print "Sorry I didnt get that. Try again."
-                sub_query=raw_input('Would you like to:\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')              
-        
-        while query=='Delete':
-            sub_query=raw_input('Would you like to:\n'
-            '"Delete item"?\n'
-            '"Delete overheads"?\n'
-            '"Delete hours"?\n'
-            '"Delete profit"?\n'
-            '"Quit"\n'
-            '\n')
-            
-            if sub_query== 'Delete item':
-                print 'Add'
-                
-            elif sub_query== 'Delete overheads':
-                print 'Add'
-                
-            elif sub_query== 'Delete hours':
-                print 'Add'
-                
-            elif sub_query== 'Delete profit':
-                print 'Add'
-                               
-            elif sub_query== 'Quit':
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')
-                
-            else:
-                print "Sorry I didnt get that. Try again."
-                sub_query=raw_input('Would you like to:\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')              
-            
-               
-        if query=='Exit without saving':
-            print "Write code to undo previous actions"
-            action=raw_input('Choose one of the following options:\n'
-            '"Inventory"\n'
-            '"Project"\n'
-            '"Restock"\n'
-            '"Set Goal"\n'
-            '"Quit"\n'
-            '\n')        
-        
-        elif query=='Save and Exit':
-            action=raw_input('Choose one of the following options:\n'
-            '"Inventory"\n'
-            '"Project"\n'
-            '"Restock"\n'
-            '"Set Goal"\n'
-            '"Quit"\n'
-            '\n')
-                
-        else:
-            print "Sorry I didnt get that. Try again."
+
+        while query=='Create':
+            projects.append(raw_input('Name your project! '))
+            instances.append(my_projects())
+            x=len(instances)-1
+            instances[x].add_item()
             query=raw_input('What would you like to do?\n'
             '"Create" a project\n'
             '"Add" to a project\n'
@@ -338,7 +187,158 @@ elif action=='Projects':
             '"Delete" a project\n'
             '"Exit without saving"\n'
             '"Save and Exit"\n'
-            '\n')            
+            '\n')
+
+            while query=='Edit':
+                sub_query=raw_input('Would you like to:\n'
+                '"Add item"?\n'
+                '"Add to overheads"?\n'
+                '"Log hours"?\n'
+                '"Set profit"?\n'
+                '"Quit"\n'
+                '\n')
+
+                if sub_query== 'Add':
+                   print 'Add' 
+                elif sub_query== 'Add to overheads':
+                   print 'Add' 
+                elif sub_query== 'Log hours':
+                   print 'Add' 
+                elif sub_query== 'Set profit':
+                   print 'Add' 
+                elif sub_query== 'Quit':
+                    query=raw_input('What would you like to do?\n'
+                    '"Create" a project\n'
+                    '"Edit" a project\n'
+                    '"View" a project\n'
+                    '"Delete" a project\n'
+                    '"Save and Exit"\n'
+                    '\n')
+
+                else:
+                    print "Sorry I didnt get that. Try again."
+                    sub_query=raw_input('Would you like to:\n'
+                    '"Add item"?\n'
+                    '"Add to overheads"?\n'
+                    '"Log hours"?\n'
+                    '"Set profit"?\n'
+                    '\n')
+
+            while query=='View':
+                sub_query=raw_input('Would you like to:\n'
+                '"View item"?\n'
+                '"View overheads"?\n'
+                '"View hours"?\n'
+                '"View profit"?\n'
+                'View the "Project total"?\n'
+                '"Quit"\n'
+                '\n')
+
+                if sub_query== 'View item':
+                    print 'Add'
+
+                elif sub_query== 'View overheads':
+                    print 'Add'
+
+                elif sub_query== 'View hours':
+                    print 'Add'
+
+                elif sub_query== 'View profit':
+                    print 'Add'
+
+                elif sub_query== 'Project total':
+                    print 'Add'
+
+                elif sub_query== 'Quit':
+                    query=raw_input('What would you like to do?\n'
+                    '"Create" a project\n'
+                    '"Edit" a project\n'
+                    '"View" a project\n'
+                    '"Delete" a project\n'
+                    '"Save and Exit"\n'
+                    '\n')
+
+                else:
+                    print "Sorry I didnt get that. Try again."
+                    sub_query=raw_input('Would you like to:\n'
+                    '"Create" a project\n'
+                    '"Edit" a project\n'
+                    '"View" a project\n'
+                    '"Delete" a project\n'
+                    '"Save and Exit"\n'
+                    '\n')              
+
+            while query=='Delete':
+                sub_query=raw_input('Would you like to:\n'
+                '"Delete item"?\n'
+                '"Delete overheads"?\n'
+                '"Delete hours"?\n'
+                '"Delete profit"?\n'
+                '"Quit"\n'
+                '\n')
+
+                if sub_query== 'Delete item':
+                    print 'Add'
+
+                elif sub_query== 'Delete overheads':
+                    print 'Add'
+
+                elif sub_query== 'Delete hours':
+                    print 'Add'
+
+                elif sub_query== 'Delete profit':
+                    print 'Add'
+
+                elif sub_query== 'Quit':
+                    query=raw_input('What would you like to do?\n'
+                    '"Create" a project\n'
+                    '"Edit" a project\n'
+                    '"View" a project\n'
+                    '"Delete" a project\n'
+                    '"Save and Exit"\n'
+                    '\n')
+
+                else:
+                    print "Sorry I didnt get that. Try again."
+                    sub_query=raw_input('Would you like to:\n'
+                    '"Create" a project\n'
+                    '"Edit" a project\n'
+                    '"View" a project\n'
+                    '"Delete" a project\n'
+                    '"Save and Exit"\n'
+                    '\n')              
+
+
+            if query=='Exit without saving':
+                print "Write code to undo previous actions"
+                action=raw_input('Choose one of the following options:\n'
+                '"Inventory"\n'
+                '"Project"\n'
+                '"Restock"\n'
+                '"Set Goal"\n'
+                '"Quit"\n'
+                '\n')        
+
+            elif query=='Save and Exit':
+                action=raw_input('Choose one of the following options:\n'
+                '"Inventory"\n'
+                '"Project"\n'
+                '"Restock"\n'
+                '"Set Goal"\n'
+                '"Quit"\n'
+                '\n')
+
+            else:
+                print "Sorry I didnt get that. Try again."
+                query=raw_input('What would you like to do?\n'
+                '"Create" a project\n'
+                '"Add" to a project\n'
+                '"Edit" a project\n'
+                '"View" a project\n'
+                '"Delete" a project\n'
+                '"Exit without saving"\n'
+                '"Save and Exit"\n'
+                '\n')            
                         
     elif action=='Restock':
         print 'Coming soon!'
