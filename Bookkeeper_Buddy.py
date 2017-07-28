@@ -230,13 +230,13 @@ while state=='on':
                     print 'overheads'
 
                 elif sub_query== 'View hours':
-                    print 'hours
+                    print 'hours'
 
                 elif sub_query== 'View profit':
-                    print 'profit
+                    print 'profit'
 
                 elif sub_query== 'Project total':
-                    print 'total
+                    print 'total'
 
                 elif sub_query== 'Quit':
                     query=raw_input('What would you like to do?\n'
