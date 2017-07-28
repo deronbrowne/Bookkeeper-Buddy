@@ -154,15 +154,6 @@ while state=='on':
             '"Quit"?\n'
             '\n')     
     
-        
- action=raw_input('Choose one of the following options:\n'
-'"Inventory"\n'
-'"Projects"\n'
-'"Restock"\n'
-'"Set Goal"\n'
-'"Quit"\n'
-'\n')
-
     elif action=='Projects':
         query=raw_input('What would you like to do?\n'
         '"Create" a project\n'
@@ -199,13 +190,13 @@ while state=='on':
                 '\n')
 
                 if sub_query== 'Add':
-                   print 'Add' 
+                   print 'Adding' 
                 elif sub_query== 'Add to overheads':
-                   print 'Add' 
+                   print 'Adding to overheads' 
                 elif sub_query== 'Log hours':
-                   print 'Add' 
+                   print 'Logging hours' 
                 elif sub_query== 'Set profit':
-                   print 'Add' 
+                   print 'Setting profit' 
                 elif sub_query== 'Quit':
                     query=raw_input('What would you like to do?\n'
                     '"Create" a project\n'
@@ -235,19 +226,19 @@ while state=='on':
                 '\n')
 
                 if sub_query== 'View item':
-                    print 'Add'
+                    print 'item'
 
                 elif sub_query== 'View overheads':
-                    print 'Add'
+                    print 'overheads'
 
                 elif sub_query== 'View hours':
-                    print 'Add'
+                    print 'hours
 
                 elif sub_query== 'View profit':
-                    print 'Add'
+                    print 'profit
 
                 elif sub_query== 'Project total':
-                    print 'Add'
+                    print 'total
 
                 elif sub_query== 'Quit':
                     query=raw_input('What would you like to do?\n'
@@ -278,16 +269,16 @@ while state=='on':
                 '\n')
 
                 if sub_query== 'Delete item':
-                    print 'Add'
+                    print 'Deleting item'
 
                 elif sub_query== 'Delete overheads':
-                    print 'Add'
+                    print 'Deleting overheads'
 
                 elif sub_query== 'Delete hours':
-                    print 'Add'
+                    print 'Deleting hours'
 
                 elif sub_query== 'Delete profit':
-                    print 'Add'
+                    print 'Deleting profit'
 
                 elif sub_query== 'Quit':
                     query=raw_input('What would you like to do?\n'
