@@ -1,20 +1,25 @@
-print 'My_Projects initialized'
-
+#initialize lists to keep track of all the projects, their totals
+#and to track which inctances of the class "my_projects correspond to each title
 projects=[]
 instances=[]
 project_total=[]
-#hourly_rate=float(raw_input('What is your hourly rate? '))
+#record hourly rate to enable user to pay himself absed on hours worked
+hourly_rate=float(raw_input('What is your hourly rate? '))
 
 class my_projects:
+    #lists to record information about the items from the inventory being used in a project
     items=[]
     item_cost=[]
     item_count=[]
     item_subtotal=[]
+    #lists to record information about the overhead costs associated with this projects    
     overheads=[]
     overhead_cost=[]
+    
     day=[]
     time=[]
     salary=[]
+    
     percent_profit=[]
     profit=[]
     
