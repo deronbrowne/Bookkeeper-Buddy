@@ -30,8 +30,8 @@ while state=='on':
         if query=='Create':
             Save = 'keep adding'
             while Save=='keep adding':
-                    a=inventory()
-                    inventory.add_item(a)
+                    a=Inventory.inventory()
+                    Inventory.inventory.add_item(a)
                     Save=raw_input('Would you like to save your inventory or keep adding? Save/keep adding\n'
                                   '\n')
             del a
@@ -48,7 +48,7 @@ while state=='on':
         elif query=='Edit':
             Save = 'Keep editing'
             while Save=='Keep editing':
-                inventory.edit_item()
+                Inventory.inventory.edit_item()
                 Save=raw_input('Would you like to:\n'
                 '"Save"\n'
                 'or"Keep editing"\n')
@@ -70,8 +70,8 @@ while state=='on':
         elif query=='Add':
             Save = 'keep adding'
             while Save=='keep adding':
-                    a=inventory()
-                    inventory.add_item(a)
+                    a=Inventory.inventory()
+                    Inventory.inventory.add_item(a)
                     Save=raw_input('Would you like to save your entries or keep adding? Save/keep adding ')
             del a
             query=raw_input('What would you like to do?\n'
@@ -85,9 +85,9 @@ while state=='on':
             '\n')
             
         elif query=='View inventory':
-            x=len(inventory.name)-1
+            x=len(Inventory.inventory.name)-1
             for i in range(1,x):
-              print inventory.name[x], inventory.item_count[x], inventory.item_cost[x], inventory.subtotals[x]
+              print Inventory.inventory.name[x], Inventory.inventory.item_count[x], Inventory.inventory.item_cost[x], Inventory.inventory.subtotals[x]
             query=raw_input('What would you like to do?\n'
             '"Create" an inventory\n'
             '"Edit" the inventory\n'
@@ -99,12 +99,12 @@ while state=='on':
             '\n')
                  
         elif query=='View item':
-            print inventory.name
+            print Inventory.inventory.name
             State='view another'
             while State=='view another':
-                x=inventory.name.index(raw_input('Which item would you like to view? '))
-                a=inventory()
-                inventory.view_item(a,x)
+                x=Inventory.inventory.name.index(raw_input('Which item would you like to view? '))
+                a=Inventory.inventory()
+                Inventory.inventory.view_item(a,x)
                 State=raw_input('Would you like to "return" to the main menu or "view another"? ')
             del a
             del x
@@ -118,12 +118,12 @@ while state=='on':
             '\n')
                 
         elif query=='Delete':
-            print inventory.name
+            print Inventory.inventory.name
             State='delete another'
             while State=='delete another':
-                x=inventory.name.index(raw_input('What would you like to delete?'))
-                a=inventory()
-                inventory.delete_item(a,x)
+                x=Inventory.inventory.name.index(raw_input('What would you like to delete?'))
+                a=Inventory.inventory()
+                Inventory.inventory.delete_item(a,x)
                 State=raw_input('Would you like to "save" your changes or "delete another"? ')
             del a
             del x
@@ -167,10 +167,10 @@ while state=='on':
         '\n')
 
         while query=='Create':
-            projects.append(raw_input('Name your project! '))
-            instances.append(my_projects())
-            x=len(instances)-1
-            instances[x].add_item()
+            My_Projects.projects.append(raw_input('Name your project! '))
+            My_Projects.instances.append(My_Projects.my_projects())
+            x=len(My_Projects.instances)-1
+            My_Projects.instances[x].add_item()
             query=raw_input('What would you like to do?\n'
             '"Create" a project\n'
             '"Add" to a project\n'
