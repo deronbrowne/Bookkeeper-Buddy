@@ -1,3 +1,6 @@
+import My_Projects
+import Inventory
+
 state='on'
 
 print 'Welcome to "Bookkeeper Buddy"!'
