@@ -1,22 +1,25 @@
+print 'Inventory initialized'
 class inventory:
+    #initialize lists that will store information about the inventory
     name = []
     num_pieces = []
     cost_per_piece = []
     subtotals=[]
 
-    def add_name(self, name):
+    def add_name(self, name): #adds a name to the list 'name'
         self.name.append(name)
 
-    def add_num(self, num):
+    def add_num(self, num): #adds a corresponding number of items to the list 'num_pieces'
         self.num_pieces.append(num)
         
-    def add_cost(self, cost):
+    def add_cost(self, cost): #adds a corresponding cost to the list 'cost_per_piece'
         self.cost_per_piece.append(cost)
                
-    def subtotal(self, num, cost):
+    def subtotal(self, num, cost): #adds a corresponding subtotal to the list of 'subtotals'
         self.subtotals.append(float(num)*float(cost))
               
-    def add_item(self):
+    def add_item(self): #adds an item to the list by saving the name, count, price and 
+                        #subtotal of the addition
         self.add_name(raw_input('What are you adding? '))
         self.add_num(float(raw_input('How many? ')))
         self.add_cost(float(raw_input('Cost per item? ')))
@@ -26,19 +29,20 @@ class inventory:
         c=self.cost_per_piece[x-1]
         self.subtotals.append(b*c)
           
-    def view_item(self):
-        print self.name
+    def view_item(self): 
+        print self.name #shows user the names of all the options he can choose from
         x=self.name.index(raw_input('What would you like to edit?\n'
-                                   '\n'))
+                                   '\n')) #user chooses an option; index recorded
+        #prints all the information associated with an item of the user's choice                
         print self.name[x]
         print self.cost_per_piece[x]
         print self.num_pieces[x]
         print self.subtotals[x]
         
     def edit_item(self):
-        print self.name
+        print self.name #shows user the names of all the options he can choose from
         x=self.name.index(raw_input('What would you like to edit?\n'
-                                   '\n'))
+                                   '\n')) #user chooses an option; index recorded
         print self.name[x]
         print self.cost_per_piece[x]
         print self.num_pieces[x]
