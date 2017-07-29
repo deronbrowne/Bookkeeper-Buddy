@@ -41,8 +41,16 @@ class inventory:
         
     def edit_item(self):
         print self.name #shows user the names of all the options he can choose from
-        x=self.name.index(raw_input('What would you like to edit?\n'
-                                   '\n')) #user chooses an option; index recorded
+        a=raw_input('What would you like to edit?\n'
+                                       '\n')#user chooses an option from the list of item names 
+        while a not in self.name: #while loop to catch errors
+            print "I'm sorry, that item isn't in your inventory"
+            print self.name
+            a=raw_input('What would you like to edit?\n'
+                                       '\n')#user chooses an option from the list of item names
+                                    
+        x=self.name.index(a) #index recorded
+        #print the information that is about to be changed
         print self.name[x]
         print self.cost_per_piece[x]
         print self.num_pieces[x]
@@ -52,7 +60,15 @@ class inventory:
                        'a "Name"\n'
                        'a "Quantity"\n'
                        'or a "Price"?\n'
-                       '\n')
+                       '\n') #user chooses which part of the information he would like to edit
+        while edit !='Name' or edit!='Quantity' or edit !='Price': #while loop to catch errors
+            print "I'm sorry, that isn't a recorded property"
+            edit=raw_input('What would you like to change?\n'
+                           'a "Name"\n'
+                           'a "Quantity"\n'
+                           'or a "Price"?\n'
+                           '\n')       
+        #depending on user response, a different characteristic (item in relevant list) will be changed        
         if edit=='Name':
             self.name[x]=raw_input('What are you changing the name to?\n'
                                   '\n')
@@ -64,34 +80,36 @@ class inventory:
             self.cost_per_piece[x]=float(raw_input('What is the new price?\n'
                                   '\n'))
             self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
-        else:
-            print "I'm sorry, that item isn't in your inventory"
-            print self.name
+
     
     def delete_item(self):
-        print self.name
-        x=self.name.index(raw_input('What would you like to delete?\n'
-                                   '\n'))
-        if x in self.name:
+        print self.name #shows user the names of all the options he can choose from
+        a=raw_input('What would you like to delete?\n'
+                                       '\n')#user chooses an option from the list of item names 
+        while a not in self.name: #while loop to catch errors
+            print "I'm sorry, that item isn't in your inventory"
+            print self.name
+            a=raw_input('What would you like to delete?\n'
+                                       '\n')#user chooses an option from the list of item names                             
+        #grab index of item to be deleted; print and check before deleting
+        x=self.name.index(a) 
+        print self.name[x]
+        print self.cost_per_piece[x]
+        print self.num_pieces[x]
+        print self.subtotals[x]
+        check=raw_input('Are you sure? Yes/No\n'
+                       '\n')
+        if check=='Yes':
+            del self.name[x]
+            del self.cost_per_piece[x]
+            del self.num_pieces[x]
+            del self.subtotal[x]
+        elif check=='No':
             print self.name[x]
             print self.cost_per_piece[x]
             print self.num_pieces[x]
             print self.subtotals[x]
-            check=raw_input('Are you sure? Yes/No\n'
-                           '\n')
-            if check=='Yes':
-                del self.name[x]
-                del self.cost_per_piece[x]
-                del self.num_pieces[x]
-                del self.subtotal[x]
-            elif check=='No':
-                print self.name[x]
-                print self.cost_per_piece[x]
-                print self.num_pieces[x]
-                print self.subtotals[x]
-        else:
-            print "I'm sorry, that item isn't in your inventory"
-            print self.name          
         
-    def get_inventory_value(self):
+        
+    def get_inventory_value(self): #used if user wants to see the value of his inventory
         print sum(self.subtotals)
