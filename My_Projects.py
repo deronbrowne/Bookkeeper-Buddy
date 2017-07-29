@@ -1,3 +1,5 @@
+print 'My_Projects initialized'
+
 projects=[]
 instances=[]
 project_total=[]
