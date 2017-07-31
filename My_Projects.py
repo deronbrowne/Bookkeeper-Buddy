@@ -50,12 +50,35 @@ class my_projects:
         print 'Subtotal for this project = $'+sum(self.item_subtotal) #total value of all the items in the project
         
     def delete_items(self):
-        self.view_hours()
-        x=raw_input('What date would you like to delete?\n')
-        del self.items[x]
-        del self.item_cost[x]
-        del self.item_count[x]
-        del self.item_subtotal[x]        
+        question='Add another'
+        while question=='Add another':#allows user to add multiple items
+            print self.items #shows user the available options
+            a=raw_input('Which item would you like to delete?\n') #asks for a choice
+            while a not in self.items: #catch all
+                print self.items
+                a=raw_input("Sorry that item isn't part of your project\n"
+                            "Which item would you like to delete?\n"
+                           "\n")         
+            x=self.items.index(a) #grab index and show user what is about to be deleted
+            print self.items[x]
+            print self.item_cost[x]
+            print self.item_count[x]
+            print self.item_subtotal[x]     
+            confirm=raw_input('Are you sure? Yes/No\n'
+                                '\n')
+            while confirm!='Yes' or confirm!='No': #catch all
+                confirm=raw_input("I didn't quite catch that. Are you sure? Yes/No\n"
+                                    "\n")                
+            if confirm== 'Yes' #deletes item and associated information if choice is 'Yes'
+                del self.items[x]
+                del self.item_cost[x]
+                del self.item_count[x]
+                del self.item_subtotal[x]
+            elif confirm=='No': #shows user that item was not deleted if the choice is 'No'
+                print self.items[x]
+                print self.item_cost[x]
+                print self.item_count[x]
+                print self.item_subtotal[x]                
         
     def add_overhead_item(self):
         name=raw_input('What are you adding?\n')
