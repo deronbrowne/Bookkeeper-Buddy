@@ -15,36 +15,39 @@ class my_projects:
     #lists to record information about the overhead costs associated with this projects    
     overheads=[]
     overhead_cost=[]
-    
+    #lists to record information for paying yourself   
     day=[]
     time=[]
     salary=[]
-    
+    #lists to record information about the profit
     percent_profit=[]
     profit=[]
     
-    def add_item(self):
+    def add_item(self): #adding items to the project
         question='Add another'
-        while question=='Add another':
-            name=raw_input('What are you adding?\n')
-            cost=raw_input('How much does it cost?\n')
-            count=raw_input('How many are you adding?\n')
-            self.items.append(name)
-            self.item_cost.append(cost)
-            self.item_count.append(count)
-            a=float(self.item_cost[len(self.item_cost)-1])
-            b=float(self.item_count[len(self.item_count)-1])
-            self.item_subtotal.append(a*b)
+        while question=='Add another':#allows user to add multiple items
+            self.items.append(raw_input('What are you adding?\n'))
+            self.item_cost.append(float(raw_input('How much does it cost?\n')))
+            self.item_count.append(float(raw_input('How many are you adding?\n')))
+            a=self.item_cost[len(self.item_cost)-1] #grabs the value of the last added item
+            b=self.item_count[len(self.item_count)-1] #grabs the count of the last added item
+            self.item_subtotal.append(a*b) #calculates the total cost for all of a particular item
             question=raw_input('Would you like to:\n'
             '"Save"\n'
             'or"Add another\n'
             '\n')
+            if question!='Save' or question!='Add another': #catch all
+                print "Sorry, that isn't an option.\n"
+                question=raw_input('Would you like to:\n'
+                '"Save"\n'
+                'or"Add another\n'
+                '\n')         
         
-    def view_items(self):
+    def view_items(self): #view all the information on project items
         x=len(self.items)-1
         for index in range(1,x):
             print self.items[index], self.item_cost[index], self.item_count[index], self.item_subtotal[index]
-        print 'Subtotal for this project = $'+sum(self.item_subtotal)
+        print 'Subtotal for this project = $'+sum(self.item_subtotal) #total value of all the items in the project
         
     def delete_items(self):
         self.view_hours()
