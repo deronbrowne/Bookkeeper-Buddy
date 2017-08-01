@@ -127,7 +127,7 @@ while state=='on':
             '"View inventory"\n'
             '"View item"\n'
             '"Delete" an inventory item\n'
-            '"Quit"?\n'
+            '"Done"?\n'
             '\n')     
     
     elif action=='Projects':
