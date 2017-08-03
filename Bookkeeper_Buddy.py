@@ -295,7 +295,7 @@ while state=='on':
 
 # at this point I'd like to be able to reference particular instances of the My_Projects class based on the user defined name for the class. Not sure how to do that.
             if sub_query== 'View item':
-
+                pass
             elif sub_query== 'View overheads':
                 print 'overheads'
 
