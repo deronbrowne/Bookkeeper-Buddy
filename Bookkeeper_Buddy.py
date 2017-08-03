@@ -42,14 +42,14 @@ while state=='on':
         
         while query!='Create' or query!='Edit' or query!='Add' or query!='View inventory' or query!='View item' or query!='Delete' or query!='Done':
             action=raw_input("I didn't get that. Choose one of the following options:\n"
-        '"Create" an inventory\n'
-        '"Edit" the inventory\n'
-        '"Add" an item\n'
-        '"View inventory"\n'
-        '"View item"\n'
-        '"Delete" an inventory item\n'
-        '"Done"?\n'
-        '\n')
+            '"Create" an inventory\n'
+            '"Edit" the inventory\n'
+            '"Add" an item\n'
+            '"View inventory"\n'
+            '"View item"\n'
+            '"Delete" an inventory item\n'
+            '"Done"?\n'
+            '\n')
                       
         if query=='Create':
             a=Inventory.inventory()
@@ -128,19 +128,10 @@ while state=='on':
             '"Projects"\n'
             '"Restock"\n'
             '"Set Goal"\n'
-            '\n')
-            
-        else:
-            print "Sorry I didnt get that. Try again."
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
-            '\n')     
-    
+            '\n')    
+###############################################################################
+# Project actions
+###############################################################################   
     elif action=='Projects':
         #ask user what he'd like to do. CHoose from the options
         query=raw_input('What would you like to do?\n'
