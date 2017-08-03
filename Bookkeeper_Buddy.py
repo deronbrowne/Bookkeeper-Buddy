@@ -26,7 +26,7 @@ while state=='on':
         '\n')  
         
 ###############################################################################
-#Inventory actions
+# Inventory actions
 ###############################################################################
     if action=='Inventory':
         
@@ -133,7 +133,7 @@ while state=='on':
 # Project actions
 ###############################################################################   
     elif action=='Projects':
-        #ask user what he'd like to do. CHoose from the options
+        #ask user what he'd like to do. Choose from the options
         query=raw_input('What would you like to do?\n'
         '"Create" a project\n'
         '"Edit" a project\n'
@@ -174,7 +174,7 @@ while state=='on':
                 '\n')
 
         while query=='Edit': #if user wants to edit something
-            print My_Projects.projects
+            print My_Projects.projects #print options
             which_project=raw_input('Which project are you editing?\n'
             '\n')
             #catch all
@@ -272,7 +272,7 @@ while state=='on':
                     '\n')  
 
 
-        while query=='View':
+        while query=='View': #ask user to identify which part of the project he'd like to view
             sub_query=raw_input('Would you like to:\n'
             '"View item"?\n'
             '"View overheads"?\n'
@@ -281,9 +281,20 @@ while state=='on':
             'View the "Project total"?\n'
             '"Quit"\n'
             '\n')
+            
+            #catch all
+            while sub_query!='View item' or sub_query!='View overheads' or sub_query!='View hours' or sub_query!='View profit' or sub_query!='Project total' or sub_query!='Quit':
+                sub_query=raw_input("Sorry, I didn't get that. Would you like to:\n"
+                                    '"View item"?\n'
+                                    '"View overheads"?\n'
+                                    '"View hours"?\n'
+                                    '"View profit"?\n'
+                                    'View the "Project total"?\n'
+                                    '"Quit"\n'
+                                    '\n')
 
+# at this point I'd like to be able to reference particular instances of the My_Projects class based on the user defined name for the class. Not sure how to do that.
             if sub_query== 'View item':
-                print 'item'
 
             elif sub_query== 'View overheads':
                 print 'overheads'
@@ -304,17 +315,7 @@ while state=='on':
                 '"View" a project\n'
                 '"Delete" a project\n'
                 '"Save and Exit"\n'
-                '\n')
-
-            else:
-                print "Sorry I didnt get that. Try again."
-                sub_query=raw_input('Would you like to:\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')              
+                '\n')            
 
         while query=='Delete':
             sub_query=raw_input('Would you like to:\n'
