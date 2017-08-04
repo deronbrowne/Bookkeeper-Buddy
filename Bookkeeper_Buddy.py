@@ -55,12 +55,12 @@ while state=='on':
         #Edit
         ##################################################################
         while query=='Edit':
+            
             #ask for user choice & check
             sub_options=['Add','Change','Delete','Save & Exit']
             print '\n'.join(options)
             sub_query=raw_input('What would you like to do?\n'
             '\n')
-
             while sub_query not in sub_options:
                 print '\n'.join(sub_options)
                 sub_query=raw_input("I didn't get that. Choose one of the options:\n"
@@ -94,14 +94,7 @@ while state=='on':
                     print "define function to delete entire inventory"
                     
                 elif sub_sub_query=='Done':
-                    print '\n'.join(sub_options)
-                    sub_query=raw_input('What would you like to do?\n'
-                    '\n')
-
-                    while sub_query not in sub_options:
-                        print '\n'.join(sub_options)
-                        sub_query=raw_input("I didn't get that. Choose one of the options:\n"
-                        '\n')             
+                    pass         
             #--------------------------------------#
             elif sub_query=='Save & Exit':
                 print '\n'.join(options)
@@ -151,21 +144,15 @@ while state=='on':
 ###############################################################################   
     elif action=='Projects':
         #ask user what he'd like to do. Choose from the options
+        options=['Create','Edit','View','Delete','Exit']
+        print '\n'.join(options)
         query=raw_input('What would you like to do?\n'
-        '"Create" a project\n'
-        '"Edit" a project\n'
-        '"View" a project\n'      
-        '"Delete" a project\n'
-        '"Exit"\n'
         '\n')
+        
         #catch all
-        while query!='Create' or query!='Edit' or query!='View' or query!='Delete' or query!='Exit':
+        while query not in options:
+            print '\n'.join(options)
             query=raw_input("That isn't a valid option. What would you like to do?\n"
-            '"Create" a project\n'
-            '"Edit" a project\n'
-            '"View" a project\n'      
-            '"Delete" a project\n'
-            '"Exit"\n'
             '\n')
 
         while query=='Create':# if user wants to create a project
@@ -173,22 +160,6 @@ while state=='on':
             My_Projects.instances.append(My_Projects.my_projects()) #my attempt at using user input to initialize an instance
             x=len(My_Projects.instances)-1
             My_Projects.instances[x].add_item()
-            query=raw_input('What would you like to do?\n'
-            '"Create" a project\n'
-            '"Edit" a project\n'
-            '"View" a project\n'      
-            '"Delete" a project\n'
-            '"Exit"\n'
-            '\n')
-            #catch all
-            while query!='Create' or query!='Edit' or query!='View' or query!='Delete' or query!='Exit':
-                query=raw_input("That isn't a valid option. What would you like to do?\n"
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'      
-                '"Delete" a project\n'
-                '"Exit"\n'
-                '\n')
 
         while query=='Edit': #if user wants to edit something
             print My_Projects.projects #print options
@@ -202,37 +173,27 @@ while state=='on':
                 '\n') 
             
             #asks user what kind of edit he'd like to carry out
-            sub_query=raw_input('Would you like to:\n'
-            '"Add" something?\n'
-            '"Change" something?\n'    
-            '"Delete" something?\n'
-            '"Quit"?\n'                    
+            sub_options=['Add','Change','Delete','Quit']
+            print '\n'.join(sub_options)
+            sub_query=raw_input('How would you like to edit this project:\n'            
             '\n')
             #catch all
-            while sub_query!='Add' or sub_query!='Change' or sub_query!='Delete' or sub_query!='Quit':            
-                sub_query=raw_input("That's not a valid option. Would you like to:\n"
-                '"Add" something?\n'
-                '"Change" something?\n'    
-                '"Delete" something?\n'
-                '"Quit"?\n'                    
-                '\n')
+            while sub_query not in sub_options:
+                print '\n'.join(sub_options)
+                sub_query=raw_input("That's not a valid option. How would you like to edit this project:\n"            
+                '\n')                
                 
             #executes based on user input
             if sub_query== 'Add':
                 #asks user which project characteristic he'd like to add to
+                sub_sub_options=['Project items','Overheads','Hours worked','Done']
+                print sub_sub_options
                 sub_sub_query=raw_input('What are you adding to?\n'
-                                   '"Project items"?\n'
-                                   '"Overheads"?\n'
-                                   '"Hours worked"?\n'
-                                   '"Done"\n'
                                    '\n')
                 #catch all
-                while sub_sub_query!='Project items' or sub_sub_query!='Overheads' or sub_sub_query!='Hours worked' or sub_sub_query!='Done':            
-                    sub_sub_query=raw_input("That's not a valid option. What are you adding to?\n"
-                                       '"Project items"?\n'
-                                       '"Overheads"?\n'
-                                       '"Hours worked"?\n'
-                                       '"Done"\n'
+                while sub_sub_query not in sub_sub_options:            
+                    print sub_sub_options
+                    sub_sub_query=raw_input("That isn't a valid option. What are you adding to?\n"
                                        '\n')
                 
             elif sub_query== 'Change':
