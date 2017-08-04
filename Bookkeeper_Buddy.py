@@ -7,23 +7,16 @@ print 'Welcome to "Bookkeeper Buddy"!'
 
 while state=='on':
     #allows user to choose which part of their records to access
-    action=raw_input('Choose one of the following options:\n'
-    '"Inventory"\n'
-    '"Projects"\n'
-    '"Restock"\n'
-    '"Set Goal"\n'
-    '"Quit"\n'
-    '\n')
+    options = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+    print '\n'.join(options)
+    action=raw_input('Pick an option:\n'
+                    '\n')
 
     #catch all    
-    while action != 'Inventory' or 'Projects' or 'Restock' or 'Set Goal' or 'Quit':
-        action=raw_input("I didn't get that. Choose one of the following options:\n"
-        '"Inventory"\n'
-        '"Projects"\n'
-        '"Restock"\n'
-        '"Set Goal"\n'
-        '"Quit"\n'
-        '\n')  
+    while action not in options:
+        print '\n'.join(options)
+        action=raw_input("I didn't get that. Pick an option:\n"
+                        '\n')
         
 ###############################################################################
 # Inventory actions
