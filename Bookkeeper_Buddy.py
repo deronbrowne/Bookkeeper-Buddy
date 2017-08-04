@@ -16,7 +16,7 @@ while state=='on':
     '\n')
 
     #catch all    
-    while action!='Inventory' or action!='Projects' or action!='Restock' or action!='Set Goal' or action!='Quit':
+    while action != 'Inventory' or 'Projects' or 'Restock' or 'Set Goal' or 'Quit':
         action=raw_input("I didn't get that. Choose one of the following options:\n"
         '"Inventory"\n'
         '"Projects"\n'
@@ -40,7 +40,7 @@ while state=='on':
         '"Done"?\n'
         '\n')
         
-        while query!='Create' or query!='Edit' or query!='Add' or query!='View inventory' or query!='View item' or query!='Delete' or query!='Done':
+        while query not in ['Create', 'Edit', 'Add', 'View inventory', 'View item', 'Delete', 'Done']:
             action=raw_input("I didn't get that. Choose one of the following options:\n"
             '"Create" an inventory\n'
             '"Edit" the inventory\n'
