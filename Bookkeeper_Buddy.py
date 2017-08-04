@@ -23,63 +23,96 @@ while state=='on':
 ###############################################################################
     if action=='Inventory':
         
-        query=raw_input('What would you like to do?\n'
-        '"Create" an inventory\n'
-        '"Edit" the inventory\n'
-        '"Add" an item\n'
-        '"View inventory"\n'
-        '"View item"\n'
-        '"Delete" an inventory item\n'
-        '"Done"?\n'
+        options=['Create', 'Edit', 'View', 'View item', 'Delete', 'Save & Exit'] #create list with available options
+        print '\n'.join(options) #display list members each on a new line
+        query=raw_input('What would you like to do?\n' #ask for user choice
         '\n')
         
-        while query not in ['Create', 'Edit', 'Add', 'View inventory', 'View item', 'Delete', 'Done']:
-            action=raw_input("I didn't get that. Choose one of the following options:\n"
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"Add" an item\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
-            '\n')
-                      
-        if query=='Create':
-            a=Inventory.inventory()
-            Inventory.inventory.add_item(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"Add" an item\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
+        #catch all
+        while query not in options:
+            print '\n'.join(options)
+            query=raw_input("I didn't get that. Choose one of the options:\n"
             '\n')
         
-        elif query=='Edit':
-            Inventory.inventory.edit_item(a)
+        #Create
+        ##################################################################
+        while query=='Create': #as long as user wants to create an inventory
+            a=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name
+            Inventory.inventory.add_item(a) #add items
+            
+            #ask for a new choice & check
+            print '\n'.join(options)
             query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"View inventory list"\n'
-            '"View item info"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
             '\n')
 
-        elif query=='Add':
-            Inventory.inventory.add_item(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"Add" an item\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
+            while query not in options:
+                print '\n'.join(options)
+                query=raw_input("I didn't get that. Choose one of the options:\n"
+                '\n')
+        ##################################################################
+        
+        
+        #Edit
+        ##################################################################
+        while query=='Edit':
+            #ask for user choice & check
+            sub_options=['Add','Change','Delete','Save & Exit']
+            print '\n'.join(options)
+            sub_query=raw_input('What would you like to do?\n'
             '\n')
-            
+
+            while sub_query not in sub_options:
+                print '\n'.join(sub_options)
+                sub_query=raw_input("I didn't get that. Choose one of the options:\n"
+                '\n')
+            #------------------------------------#
+            if sub_query=='Add': #want user to be able to add multiple items in a single loop
+                Inventory.inventory.add_item(a) #if this function is already a while loop, then an if statement will suffice
+
+            #-----------------------------------#
+            elif sub_query=='Change': #want user to be able to change multiple items in a single loop
+                Inventory.inventory.edit_item(a) #if edit_item() is already in a while loop, then an if statement will suffice
+       
+            #------------------------------------#    
+            elif sub_query== 'Delete':
+                #asks user which inventory characteristic he would like to delete
+                sub_sub_options=['Items', 'Inventory', 'Done']
+                print '\n'.join(sub_sub_options)                                
+                sub_sub_query=raw_input('What are you deleting?\n'
+                                   '\n')
+                #catch all
+                while sub_sub_query not in sub_sub_options:
+                    print '\n'.join(sub_sub_options)                                
+                    sub_sub_query=raw_input('What are you deleting?\n'
+                                       '\n')
+                
+                if sub_sub_query=='Items':
+                    print Inventory.items
+                    
+                elif sub_sub_query=='Inventory':
+                    print 'showing inventory instances'
+                    
+                elif sub_sub_query=='Done':
+                    print '\n'.join(sub_options)
+                    sub_query=raw_input('What would you like to do?\n'
+                    '\n')
+
+                    while sub_query not in sub_options:
+                        print '\n'.join(sub_options)
+                        sub_query=raw_input("I didn't get that. Choose one of the options:\n"
+                        '\n')             
+            #--------------------------------------#
+            elif sub_query=='Save & Exit':
+                print '\n'.join(options)
+                query=raw_input('What would you like to do?\n'
+                '\n')
+
+                while query not in options:
+                    print '\n'.join(options)
+                    query=raw_input("I didn't get that. Choose one of the options:\n"
+                    '\n')                                             
+        ########################################################################
+        #View
         elif query=='View inventory':
             Inventory.inventory.view_inventory(a)
             query=raw_input('What would you like to do?\n'
