@@ -7,14 +7,14 @@ print 'Welcome to "Bookkeeper Buddy"!'
 
 while state=='on':
     #allows user to choose which part of their records to access
-    options = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
-    print '\n'.join(options)
+    choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+    print '\n'.join(choices)
     action=raw_input('Pick an option:\n'
                     '\n')
 
     #catch all    
-    while action not in options:
-        print '\n'.join(options)
+    while action not in choices:
+        print '\n'.join(choices)
         action=raw_input("I didn't get that. Pick an option:\n"
                         '\n')
         
@@ -23,7 +23,7 @@ while state=='on':
 ###############################################################################
     if action=='Inventory':
         
-        options=['Create', 'Edit', 'View', 'View item', 'Delete', 'Save & Exit'] #create list with available options
+        options=['Create', 'Edit', 'View', 'Save & Exit'] #create list with available options
         print '\n'.join(options) #display list members each on a new line
         query=raw_input('What would you like to do?\n' #ask for user choice
         '\n')
@@ -66,12 +66,12 @@ while state=='on':
                 sub_query=raw_input("I didn't get that. Choose one of the options:\n"
                 '\n')
             #------------------------------------#
-            if sub_query=='Add': #want user to be able to add multiple items in a single loop
-                Inventory.inventory.add_item(a) #if this function is already a while loop, then an if statement will suffice
+            if sub_query=='Add':
+                Inventory.inventory.add_item(a)
 
             #-----------------------------------#
-            elif sub_query=='Change': #want user to be able to change multiple items in a single loop
-                Inventory.inventory.edit_item(a) #if edit_item() is already in a while loop, then an if statement will suffice
+            elif sub_query=='Change':
+                Inventory.inventory.edit_item(a) 
        
             #------------------------------------#    
             elif sub_query== 'Delete':
@@ -87,10 +87,11 @@ while state=='on':
                                        '\n')
                 
                 if sub_sub_query=='Items':
-                    print Inventory.items
+                    Inventory.delete_item(a)
                     
                 elif sub_sub_query=='Inventory':
-                    print 'showing inventory instances'
+                    print Inventory.inventory.view_inventory(a)
+                    print "define function to delete entire inventory"
                     
                 elif sub_sub_query=='Done':
                     print '\n'.join(sub_options)
@@ -113,48 +114,38 @@ while state=='on':
                     '\n')                                             
         ########################################################################
         #View
-        elif query=='View inventory':
-            Inventory.inventory.view_inventory(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"Add" an item\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
+        while query=='View':
+            sub_options=['Items','Inventory','Done']
+            print '\n'.join(options)
+            sub_query=raw_input('What would you like to do?\n'
             '\n')
-                 
-        elif query=='View item':
-            Inventory.inventory.view_item(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
-            '\n')
-                
-        elif query=='Delete':
-            print Inventory.inventory.name
-            Inventory.inventory.delete_item(a)
-            query=raw_input('What would you like to do?\n'
-            '"Create" an inventory\n'
-            '"Edit" the inventory\n'
-            '"View inventory"\n'
-            '"View item"\n'
-            '"Delete" an inventory item\n'
-            '"Done"?\n'
-            '\n')  
-        
-        elif query=='Done':
-            action=raw_input('Choose one of the following options:\n'
-            '"Inventory"\n'
-            '"Projects"\n'
-            '"Restock"\n'
-            '"Set Goal"\n'
-            '\n')    
+
+            while sub_query not in sub_options:
+                print '\n'.join(sub_options)
+                sub_query=raw_input("I didn't get that. Choose one of the options:\n"
+                '\n')
+            #---------------------------------------#    
+            if sub_query=='Inventory':
+                Inventory.inventory.view_inventory(a)
+            #---------------------------------------#
+            elif sub_query=='Items':
+                Inventory.inventory.view_item(a)
+            #---------------------------------------#
+            elif sub_query=='Done'
+                print '\n'.join(options)
+                query=raw_input('What would you like to do?\n'
+                '\n')
+
+                while query not in options:
+                    print '\n'.join(options)
+                    query=raw_input("I didn't get that. Choose one of the options:\n"
+                    '\n')  
+        ######################################################################
+        #Save & Exit
+        if query=='Save & Exit':
+                pass  
+            
+            
 ###############################################################################
 # Project actions
 ###############################################################################   
