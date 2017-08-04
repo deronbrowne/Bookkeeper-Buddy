@@ -192,33 +192,39 @@ class inventory:
                 '\n')                       
     
     def delete_item(self):
-        print self.name #shows user the names of all the options he can choose from
-        a=raw_input('What would you like to delete?\n'
-                                       '\n')#user chooses an option from the list of item names 
-        while a not in self.name: #while loop to catch errors
-            print "I'm sorry, that item isn't in your inventory"
-            print self.name
+        keep_deleting='Yes'
+        while keep_deleting=='Yes':
+            print self.name #shows user the names of all the options he can choose from
             a=raw_input('What would you like to delete?\n'
-                                       '\n')#user chooses an option from the list of item names                             
-        #grab index of item to be deleted; print and check before deleting
-        x=self.name.index(a) 
-        print self.name[x]
-        print self.cost_per_piece[x]
-        print self.num_pieces[x]
-        print self.subtotals[x]
-        
-        check=raw_input('Are you sure? Yes/No\n'
-                       '\n')
-        if check=='Yes':
-            del self.name[x]
-            del self.cost_per_piece[x]
-            del self.num_pieces[x]
-            del self.subtotal[x]
-        elif check=='No': #shows user that nothing has been changed
+                                           '\n')#user chooses an option from the list of item names 
+            while a not in self.name: #while loop to catch errors
+                print "I'm sorry, that item isn't in your inventory"
+                print self.name
+                a=raw_input('What would you like to delete?\n'
+                                           '\n')#user chooses an option from the list of item names                             
+            #grab index of item to be deleted; print and check before deleting
+            x=self.name.index(a) 
             print self.name[x]
             print self.cost_per_piece[x]
             print self.num_pieces[x]
             print self.subtotals[x]
+
+            check=raw_input('Are you sure? Yes/No\n'
+                           '\n')
+            if check=='Yes':
+                del self.name[x]
+                del self.cost_per_piece[x]
+                del self.num_pieces[x]
+                del self.subtotal[x]
+            elif check=='No': #shows user that nothing has been changed
+                print self.name[x]
+                print self.cost_per_piece[x]
+                print self.num_pieces[x]
+                print self.subtotals[x]
+                
+            keep_deleting=raw_input('Would you like to keep deleting?\n'
+                                   '"Yes"/"No"\n'
+                                   '\n')
         
         
     def get_inventory_value(self): #used if user wants to see the value of his inventory
