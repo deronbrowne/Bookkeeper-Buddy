@@ -2,18 +2,20 @@ import My_Projects
 import Inventory
 
 state='on' #'state' is supposed to represent the app/program being tuned on or accessed
-
+print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
 
 while state=='on':
     #allows user to choose which part of their records to access
     choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+    print '\n'
     print '\n'.join(choices)
     action=raw_input('Pick an option:\n'
                     '\n')
 
     #catch all    
     while action not in choices:
+        print '\n'
         print '\n'.join(choices)
         action=raw_input("I didn't get that. Pick an option:\n"
                         '\n')
@@ -21,44 +23,46 @@ while state=='on':
 ###############################################################################
 # Inventory actions
 ###############################################################################
-    if action=='Inventory':
+    while action=='Inventory':
         
         options=['Create', 'Edit', 'View', 'Save & Exit'] #create list with available options
+        print '\n'
         print '\n'.join(options) #display list members each on a new line
         query=raw_input('What would you like to do?\n' #ask for user choice
         '\n')
         
         #catch all
         while query not in options:
+            print '\n'
             print '\n'.join(options)
             query=raw_input("I didn't get that. Choose one of the options:\n"
             '\n')
         
         #Create
         ##################################################################
-        while query=='Create': #as long as user wants to create an inventory
+        if query=='Create': #as long as user wants to create an inventory
             a=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name
             Inventory.inventory.add_item(a) #add items
             
             #ask for a new choice & check
-            print '\n'.join(options)
-            query=raw_input('What would you like to do?\n'
-            '\n')
-
-            while query not in options:
-                print '\n'.join(options)
-                query=raw_input("I didn't get that. Choose one of the options:\n"
-                '\n')
-        ##################################################################
+#            print '\n'
+#            print '\n'.join(options)
+#            query=raw_input('What would you like to do?\n'
+#            '\n')
+#
+#            while query not in options:
+#                print '\n'.join(options)
+#                query=raw_input("I didn't get that. Choose one of the options:\n"
+#                '\n')
         
         
         #Edit
         ##################################################################
         while query=='Edit':
-            
             #ask for user choice & check
             sub_options=['Add','Change','Delete','Save & Exit']
-            print '\n'.join(options)
+            print '\n'
+            print '\n'.join(sub_options)
             sub_query=raw_input('What would you like to do?\n'
             '\n')
             while sub_query not in sub_options:
@@ -77,6 +81,7 @@ while state=='on':
             elif sub_query== 'Delete':
                 #asks user which inventory characteristic he would like to delete
                 sub_sub_options=['Items', 'Inventory', 'Done']
+                print'\n'
                 print '\n'.join(sub_sub_options)                                
                 sub_sub_query=raw_input('What are you deleting?\n'
                                    '\n')
@@ -87,7 +92,7 @@ while state=='on':
                                        '\n')
                 
                 if sub_sub_query=='Items':
-                    Inventory.delete_item(a)
+                    Inventory.inventory.delete_item(a)
                     
                 elif sub_sub_query=='Inventory':
                     print Inventory.inventory.view_inventory(a)
@@ -97,16 +102,10 @@ while state=='on':
                     pass         
             #--------------------------------------#
             elif sub_query=='Save & Exit':
-                print '\n'.join(options)
-                query=raw_input('What would you like to do?\n'
-                '\n')
-
-                while query not in options:
-                    print '\n'.join(options)
-                    query=raw_input("I didn't get that. Choose one of the options:\n"
-                    '\n')                                             
+                pass
+        
+        #View                                             
         ########################################################################
-        #View
         while query=='View':
             sub_options=['Items','Inventory','Done']
             print '\n'.join(options)
@@ -124,17 +123,11 @@ while state=='on':
             elif sub_query=='Items':
                 Inventory.inventory.view_item(a)
             #---------------------------------------#
-            elif sub_query=='Done'
-                print '\n'.join(options)
-                query=raw_input('What would you like to do?\n'
-                '\n')
+            elif sub_query=='Done':
+                pass
 
-                while query not in options:
-                    print '\n'.join(options)
-                    query=raw_input("I didn't get that. Choose one of the options:\n"
-                    '\n')  
-        ######################################################################
         #Save & Exit
+        ######################################################################
         if query=='Save & Exit':
                 pass  
             
@@ -142,7 +135,7 @@ while state=='on':
 ###############################################################################
 # Project actions
 ###############################################################################   
-    elif action=='Projects':
+    while action=='Projects':
         #ask user what he'd like to do. Choose from the options
         options=['Create','Edit','View','Delete','Exit']
         print '\n'.join(options)
@@ -155,12 +148,16 @@ while state=='on':
             query=raw_input("That isn't a valid option. What would you like to do?\n"
             '\n')
 
+        #Create
+        #######################################################################
         while query=='Create':# if user wants to create a project
             My_Projects.projects.append(raw_input('Name your project! '))
             My_Projects.instances.append(My_Projects.my_projects()) #my attempt at using user input to initialize an instance
             x=len(My_Projects.instances)-1
             My_Projects.instances[x].add_item()
 
+        #Edit
+        #######################################################################
         while query=='Edit': #if user wants to edit something
             print My_Projects.projects #print options
             which_project=raw_input('Which project are you editing?\n'
@@ -249,7 +246,8 @@ while state=='on':
                     '"Exit"\n'
                     '\n')  
 
-
+        #View
+        #######################################################################
         while query=='View': #ask user to identify which part of the project he'd like to view
             sub_query=raw_input('Would you like to:\n'
             '"View item"?\n'
@@ -295,6 +293,8 @@ while state=='on':
                 '"Save and Exit"\n'
                 '\n')            
 
+        #Delete
+        #######################################################################
         while query=='Delete':
             sub_query=raw_input('Would you like to:\n'
             '"Delete item"?\n'
@@ -335,7 +335,8 @@ while state=='on':
                 '"Save and Exit"\n'
                 '\n')              
 
-
+        #Exit without saving
+        #######################################################################
         if query=='Exit without saving':
             print "Write code to undo previous actions"
             action=raw_input('Choose one of the following options:\n'
@@ -346,7 +347,9 @@ while state=='on':
             '"Quit"\n'
             '\n')        
 
-        elif query=='Save and Exit':
+        #Save & Exit
+        #######################################################################
+        elif query=='Save & Exit':
             action=raw_input('Choose one of the following options:\n'
             '"Inventory"\n'
             '"Project"\n'
@@ -367,12 +370,12 @@ while state=='on':
             '"Save and Exit"\n'
             '\n')            
                         
-    elif action=='Restock':
+    while action=='Restock':
         print 'Coming soon!'
     
-    elif action=='Set Goal':
+    while action=='Set Goal':
         print 'Coming soon!'
         
-    elif action=='Quit':
+    if action=='Quit':
         print 'Goodbye'
         state='off'
