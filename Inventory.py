@@ -1,4 +1,3 @@
-print 'Inventory initialized'
 class inventory:
     #initialize lists that will store information about the inventory
     name = []
@@ -33,11 +32,16 @@ class inventory:
            keep_adding=raw_input('Would you like to add another item?\n'
            '"Yes"/"No"\n'
            '\n')
-           while keep_adding!='Yes' or keep_adding!='No':
+           
+           choice=['Yes','No']
+           while keep_adding not in choice:
                keep_adding=raw_input("Sorry I didn't get that. Would you like to add another item?\n"
                '"Yes"/"No"\n'
-               '\n')               
-          
+               '\n')    
+               
+        if keep_adding=='No':
+            pass
+        
     def view_inventory(self):
         x=len(self.name)-1
         for i in range(1,x):
@@ -72,121 +76,70 @@ class inventory:
     def edit_item(self):
         keep_editing='Yes'
         while keep_editing=='Yes': #while the user wants to keep editing, keep executing the edit code
-            print self.name #shows user the names of all the options he can choose from
-            a=raw_input('What would you like to edit?\n'
+            print '\n'
+            print '\n'.join(self.name) #shows user the names of all the options he can choose from
+            b=raw_input('What would you like to edit?\n'
                                            '\n')#user chooses an option from the list of item names 
-            while a not in self.name: #while loop to catch errors
+            while b not in self.name: #while loop to catch errors
                 print "I'm sorry, that item isn't in your inventory"
-                print self.name
-                a=raw_input('What would you like to edit?\n'
+                print '\n'.join(self.name)
+                b=raw_input('What would you like to edit?\n'
                                            '\n')#user chooses an option from the list of item names
-                                        
-            x=self.name.index(a) #index recorded
-            #print the information that is about to be changed
-            print self.name[x]
-            print self.cost_per_piece[x]
-            print self.num_pieces[x]
-            print self.subtotals[x]
             
-            edit=raw_input('What would you like to change?\n'
-                           'a "Name"\n'
-                           'a "Quantity"\n'
-                           'or a "Price"?\n'
-                           '\n') #user chooses which part of the information he would like to edit
-            while edit !='Name' or edit!='Quantity' or edit !='Price': #while loop to catch errors
-                print "I'm sorry, that isn't a recorded property"
-                edit=raw_input('What would you like to change?\n'
-                               'a "Name"\n'
-                               'a "Quantity"\n'
-                               'or a "Price"?\n'
-                               '\n')       
-            #depending on user response, a different characteristic (item in relevant list) will be changed        
-            if edit=='Name':
-                self.name[x]=raw_input('What are you changing the name to?\n'
-                                      '\n')
-                done='No' #check to see if user wants to edit something else about the item
-                while done=='No': #if user isn't done with this item
-                    edit=raw_input('What would you like to change?\n'
-                                   'a "Name"\n'
-                                   'a "Quantity"\n'
-                                   'or a "Price"?\n'
-                                   '\n') #user chooses which part of the information he would like to edit
-                    while edit !='Name' or edit!='Quantity' or edit !='Price': #while loop to catch errors
-                        print "I'm sorry, that isn't a recorded property"
-                        edit=raw_input('What would you like to change?\n'
-                                       'a "Name"\n'
-                                       'a "Quantity"\n'
-                                       'or a "Price"?\n'
-                                       '\n')
-                                       
-                    done=raw_input('Are you done with this item?\n'
-                                    '"Yes"/"No"\n'
-                                    '\n')
-                    while done!='No' or done !='Yes': #catch all
-                        done=raw_input('I missed that. Would you like to change something else about this item?\n'
-                                        '"Yes"/"No"\n'
-                                        '\n')      
-                              
-            elif edit=='Quantity':
-                self.num_pieces[x]=float(raw_input('What is the new quantity?\n'
-                                      '\n'))
-                self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
+            done='No'
+            while done=='No':                            
+                x=self.name.index(b) #index recorded
+                #print the information that is about to be changed
+                print '\n'
+                print 'Name: '+ str(self.name[x])
+                print 'Quantity: '+ str(self.cost_per_piece[x])
+                print 'Price: '+ str(self.num_pieces[x])
+                print 'Subtotal: '+ str(self.subtotals[x])
                 
-                done='No' #check to see if user wants to edit something else about the item
-                while done=='No': #if user isn't done with this item
+                
+                options=['Name','Quantity','Price']
+                print '\n'
+                edit=raw_input('What would you like to change?\n'
+                               '\n') #user chooses which part of the information he would like to edit
+                #catch all
+                while edit not in options:
+                    print "I'm sorry, that isn't a recorded property"
+                    print '\n'
+                    print '\n'.join(options)
                     edit=raw_input('What would you like to change?\n'
-                                   'a "Name"\n'
-                                   'a "Quantity"\n'
-                                   'or a "Price"?\n'
-                                   '\n') #user chooses which part of the information he would like to edit
-                    while edit !='Name' or edit!='Quantity' or edit !='Price': #while loop to catch errors
-                        print "I'm sorry, that isn't a recorded property"
-                        edit=raw_input('What would you like to change?\n'
-                                       'a "Name"\n'
-                                       'a "Quantity"\n'
-                                       'or a "Price"?\n'
-                                       '\n')
-                                       
-                    done=raw_input('Are you done with this item?\n'
-                                    '"Yes"/"No"\n'
-                                    '\n')
-                    while done!='No' or done !='Yes': #catch all
-                        done=raw_input('I missed that. Would you like to change something else about this item?\n'
-                                        '"Yes"/"No"\n'
-                                        '\n')      
+                               '\n') #user chooses which part of the information he would like to edit    
+                
+                #depending on user response, a different characteristic (item in relevant list) will be changed                    
+                if edit=='Name':
+                    self.name[x]=raw_input('What are you changing the name to?\n'
+                                          '\n')    
+                    b=self.name[x]
+                                  
+                elif edit=='Quantity':
+                    self.num_pieces[x]=float(raw_input('What is the new quantity?\n'
+                                          '\n'))
+                    self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
 
-            elif edit=='Price':
-                self.cost_per_piece[x]=float(raw_input('What is the new price?\n'
-                                      '\n'))
-                self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
-
-                done='No' #check to see if user wants to edit something else about the item
-                while done=='No': #if user isn't done with this item
-                    edit=raw_input('What would you like to change?\n'
-                                   'a "Name"\n'
-                                   'a "Quantity"\n'
-                                   'or a "Price"?\n'
-                                   '\n') #user chooses which part of the information he would like to edit
-                    while edit !='Name' or edit!='Quantity' or edit !='Price': #while loop to catch errors
-                        print "I'm sorry, that isn't a recorded property"
-                        edit=raw_input('What would you like to change?\n'
-                                       'a "Name"\n'
-                                       'a "Quantity"\n'
-                                       'or a "Price"?\n'
-                                       '\n')
-                                       
-                    done=raw_input('Are you done with this item?\n'
+                elif edit=='Price':
+                    self.cost_per_piece[x]=float(raw_input('What is the new price?\n'
+                                          '\n'))
+                    self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
+    
+                                           
+                done=raw_input('Are you done with this item?\n'
+                                '"Yes"/"No"\n'
+                                '\n')
+                choice=['Yes','No']
+                while done not in choice: #catch all
+                    done=raw_input('I missed that. Would you like to change something else about this item?\n'
                                     '"Yes"/"No"\n'
-                                    '\n')
-                    while done!='No' or done !='Yes': #catch all
-                        done=raw_input('I missed that. Would you like to change something else about this item?\n'
-                                        '"Yes"/"No"\n'
-                                        '\n')      
+                                    '\n')      
 
             keep_editing=raw_input('Would you like to edit another item?\n' #when user is done with an item, he may move on to editing another
             '"Yes"/"No"\n'
             '\n')
-            while keep_editing!='Yes' or keep_editing!='No':
+            choice=['Yes','No']
+            while keep_editing not in choice:
                 keep_editing=raw_input("Sorry I didn't get that. Would you like to add another item?\n"
                 '"Yes"/"No"\n'
                 '\n')                       
@@ -195,19 +148,20 @@ class inventory:
         keep_deleting='Yes'
         while keep_deleting=='Yes':
             print self.name #shows user the names of all the options he can choose from
-            a=raw_input('What would you like to delete?\n'
+            b=raw_input('What would you like to delete?\n'
                                            '\n')#user chooses an option from the list of item names 
-            while a not in self.name: #while loop to catch errors
+            while b not in self.name: #while loop to catch errors
                 print "I'm sorry, that item isn't in your inventory"
                 print self.name
-                a=raw_input('What would you like to delete?\n'
+                b=raw_input('What would you like to delete?\n'
                                            '\n')#user chooses an option from the list of item names                             
             #grab index of item to be deleted; print and check before deleting
-            x=self.name.index(a) 
-            print self.name[x]
-            print self.cost_per_piece[x]
-            print self.num_pieces[x]
-            print self.subtotals[x]
+            x=self.name.index(b) 
+            print '\n'
+            print 'Name: ' + self.name[x]
+            print 'Cost: ' + str(self.cost_per_piece[x])
+            print 'Quantity: ' + str(self.num_pieces[x])
+            print 'Subtotal: ' + str(self.subtotals[x])
 
             check=raw_input('Are you sure? Yes/No\n'
                            '\n')
@@ -217,10 +171,11 @@ class inventory:
                 del self.num_pieces[x]
                 del self.subtotal[x]
             elif check=='No': #shows user that nothing has been changed
-                print self.name[x]
-                print self.cost_per_piece[x]
-                print self.num_pieces[x]
-                print self.subtotals[x]
+                print '\n'
+                print 'Name: ' + self.name[x]
+                print 'Cost: ' + str(self.cost_per_piece[x])
+                print 'Quantity: ' + str(self.num_pieces[x])
+                print 'Subtotal: ' + str(self.subtotals[x])
                 
             keep_deleting=raw_input('Would you like to keep deleting?\n'
                                    '"Yes"/"No"\n'
