@@ -5,6 +5,23 @@ state='on' #'state' is supposed to represent the app/program being tuned on or a
 print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
 
+# This is a generic function for getting the user action from a set of options
+# choices - the set of valid choices
+# prompt - the user prompt
+# error prompt - the error prompt
+# Returns: the valid user action
+def action_selector(choices, prompt, error_prompt):
+    print '\n'
+    print '\n'.join(choices)
+    action = raw_input(prompt)
+
+    while action not in choices:
+        print '\n'
+        print '\n'.join(choices)
+        action=raw_input(error_prompt)
+
+    return action
+
 while state=='on':
     #allows user to choose which part of their records to access
     choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
