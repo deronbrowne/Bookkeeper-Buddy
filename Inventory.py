@@ -46,7 +46,7 @@ class inventory:
         x=len(self.name)-1
         for i in range(1,x):
           print self.name[x], self.item_count[x], self.item_cost[x], self.subtotals[x]  
-        print 'Inventory value = $'+sum(self.subtotals) #total value of all the items in the inventory       
+        print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
     def view_item(self):
         view_another='Yes'
@@ -169,7 +169,7 @@ class inventory:
                 del self.name[x]
                 del self.cost_per_piece[x]
                 del self.num_pieces[x]
-                del self.subtotal[x]
+                del self.subtotals[x]
             elif check=='No': #shows user that nothing has been changed
                 print '\n'
                 print 'Name: ' + self.name[x]
