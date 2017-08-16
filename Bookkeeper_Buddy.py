@@ -58,7 +58,7 @@ while state=='on':
         
         #Edit
         ##################################################################
-        while query=='Edit':
+        if query=='Edit':
             #ask for user choice & check
             sub_options=['Add','Change','Delete','Save & Exit']
             print '\n'
