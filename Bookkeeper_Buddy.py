@@ -95,8 +95,7 @@ while state=='on':
                     Inventory.inventory.delete_item(a)
                     
                 elif sub_sub_query=='Inventory':
-                    print Inventory.inventory.view_inventory(a)
-                    print "define function to delete entire inventory"
+                    Inventory.inventory.delete_inventory(a)
                     
                 elif sub_sub_query=='Done':
                     pass         
