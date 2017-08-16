@@ -45,7 +45,11 @@ class inventory:
     def view_inventory(self):
         x=len(self.name)-1
         for i in range(1,x):
-          print self.name[x], self.item_count[x], self.item_cost[x], self.subtotals[x]  
+          print self.name[x]
+          print self.item_count[x]
+          print self.item_cost[x]
+          print self.subtotals[x] 
+          print '\n'
         print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
     def view_item(self):
@@ -180,6 +184,22 @@ class inventory:
             keep_deleting=raw_input('Would you like to keep deleting?\n'
                                    '"Yes"/"No"\n'
                                    '\n')
+                                   
+    def delete_inventory(self):
+        self.view_inventory()
+        sure_list=['Yes','No']
+        sure=raw_input("Are you sure? 'Yes'/'No' \n"
+                        '\n')
+        while sure not in sure_list: #while loop to catch errors
+            print "I'm sorry, I didn't get that."
+            sure=raw_input('Are you sure you want to delete you entire inventory?\n'
+                                       '\n')        
+        x=len(self.name)-1
+        for i in range(1,x):
+          del self.name[x]
+          del self.item_count[x]
+          del self.item_cost[x]
+          del self.subtotals[x]
         
         
     def get_inventory_value(self): #used if user wants to see the value of his inventory
