@@ -95,6 +95,7 @@ while state=='on':
                     Inventory.inventory.delete_item(a)
                     
                 elif sub_sub_query=='Inventory':
+                    Inventory.inventory.view_inventory(a)
                     Inventory.inventory.delete_inventory(a)
                     
                 elif sub_sub_query=='Done':
@@ -107,7 +108,8 @@ while state=='on':
         ########################################################################
         while query=='View':
             sub_options=['Items','Inventory','Done']
-            print '\n'.join(options)
+            print '\n'.join(sub_options)
+            print '\n'
             sub_query=raw_input('What would you like to do?\n'
             '\n')
 
