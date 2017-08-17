@@ -44,12 +44,14 @@ class inventory:
         
     def view_inventory(self):
         x=len(self.name)-1
+        print 'here'
         for i in range(1,x):
-          print self.name[x]
-          print self.item_count[x]
-          print self.item_cost[x]
-          print self.subtotals[x] 
-          print '\n'
+            print 'here'
+            print self.name[i]
+            print self.item_count[i]
+            print self.item_cost[i]
+            print self.subtotals[i] 
+            print '\n'
         print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
     def view_item(self):
@@ -186,7 +188,6 @@ class inventory:
                                    '\n')
                                    
     def delete_inventory(self):
-        self.view_inventory()
         sure_list=['Yes','No']
         sure=raw_input("Are you sure? 'Yes'/'No' \n"
                         '\n')
