@@ -43,14 +43,12 @@ class inventory:
             pass
         
     def view_inventory(self):
-        x=len(self.name)-1
-        print 'here'
-        for i in range(1,x):
-            print 'here'
-            print self.name[i]
-            print self.item_count[i]
-            print self.item_cost[i]
-            print self.subtotals[i] 
+        x=len(self.name)
+        for i in xrange(0,x):
+            print 'Name: '      + self.name[i]
+            print 'Cost: '      + str(self.cost_per_piece[i])
+            print 'Quantity: '  + str(self.num_pieces[i])
+            print 'Subtotal: '  + str(self.subtotals[i])
             print '\n'
         print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
@@ -67,14 +65,15 @@ class inventory:
                             '\n')
             x=self.name.index(b) #user chooses an option; index recorded                                           '\n')                
             #prints all the information associated with an item of the user's choice                
-            print self.name[x]
-            print self.cost_per_piece[x]
-            print self.num_pieces[x]
-            print self.subtotals[x]
+            print 'Name: ' + self.name[x]
+            print 'Cost: ' + str(self.cost_per_piece[x])
+            print 'Quantity: ' + str(self.num_pieces[x])
+            print 'Subtotal: ' + str(self.subtotals[x])
             keep_viewing=raw_input('Would you like to view another item?\n'
                '"Yes"/"No"\n'
                '\n')
-            while keep_viewing!='Yes' or keep_viewing!='No':
+            choice=['Yes','No']
+            while keep_viewing not in choice:
                 keep_viewing=raw_input("Sorry I didn't get that. Would you like to view another item?\n"
                    '"Yes"/"No"\n'
                    '\n')             
@@ -195,12 +194,12 @@ class inventory:
             print "I'm sorry, I didn't get that."
             sure=raw_input('Are you sure you want to delete you entire inventory?\n'
                                        '\n')        
-        x=len(self.name)-1
-        for i in range(1,x):
-          del self.name[x]
-          del self.item_count[x]
-          del self.item_cost[x]
-          del self.subtotals[x]
+        x=len(self.name)
+        for i in xrange(0,x-1):
+          del self.name[i]
+          del self.num_pieces[i]
+          del self.cost_per_piece[i]
+          del self.subtotals[i]
         
         
     def get_inventory_value(self): #used if user wants to see the value of his inventory
