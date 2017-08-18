@@ -192,14 +192,16 @@ class inventory:
                         '\n')
         while sure not in sure_list: #while loop to catch errors
             print "I'm sorry, I didn't get that."
-            sure=raw_input('Are you sure you want to delete you entire inventory?\n'
+            sure=raw_input('Are you sure you want to delete your entire inventory?\n'
                                        '\n')        
-        x=len(self.name)
-        for i in xrange(0,x-1):
-          del self.name[i]
-          del self.num_pieces[i]
-          del self.cost_per_piece[i]
-          del self.subtotals[i]
+        if sure=='Yes':
+          del self.name
+          del self.num_pieces
+          del self.cost_per_piece
+          del self.subtotals
+        
+        elif sure=='No':
+            self.view_inventory()
         
         
     def get_inventory_value(self): #used if user wants to see the value of his inventory
