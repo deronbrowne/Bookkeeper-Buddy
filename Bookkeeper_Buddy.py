@@ -106,7 +106,7 @@ while state=='on':
         
         #View                                             
         ########################################################################
-        while query=='View':
+        if query=='View':
             sub_options=['Items','Inventory','Done']
             print '\n'.join(sub_options)
             print '\n'
