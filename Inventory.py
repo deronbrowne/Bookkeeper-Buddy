@@ -42,7 +42,7 @@ class inventory:
         if keep_adding=='No':
             pass
         
-    def view_inventory(self):
+    def view_inventory(self):   
         x=len(self.name)
         for i in xrange(0,x):
             print 'Name: '      + self.name[i]
@@ -52,14 +52,14 @@ class inventory:
             print '\n'
         print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
-    def view_item(self):
+    def view_item(self): 
         view_another='Yes'
         while view_another=='Yes':
             print self.name #shows user the names of all the options he can choose from
-            b=raw_input('What would you like to edit?\n'
+            b=raw_input('What would you like to view?\n'
                                        '\n')
             while b not in self.name:
-                print self.name #shows user the names of all the options he can choose from
+                print '\n'.join(self.name) #shows user the names of all the options he can choose from
                 b=raw_input("I'm sorry, that isn't in your inventory. Try again.\n"
                             'What would you like to edit?\n'
                             '\n')
@@ -69,14 +69,16 @@ class inventory:
             print 'Cost: ' + str(self.cost_per_piece[x])
             print 'Quantity: ' + str(self.num_pieces[x])
             print 'Subtotal: ' + str(self.subtotals[x])
-            keep_viewing=raw_input('Would you like to view another item?\n'
+            view_another=raw_input('Would you like to view another item?\n'
                '"Yes"/"No"\n'
                '\n')
             choice=['Yes','No']
-            while keep_viewing not in choice:
-                keep_viewing=raw_input("Sorry I didn't get that. Would you like to view another item?\n"
+            while view_another not in choice:
+                view_another=raw_input("Sorry I didn't get that. Would you like to view another item?\n"
                    '"Yes"/"No"\n'
-                   '\n')             
+                   '\n')
+        if view_another=='No':
+            pass
 
     def edit_item(self):
         keep_editing='Yes'
@@ -195,10 +197,10 @@ class inventory:
             sure=raw_input('Are you sure you want to delete your entire inventory?\n'
                                        '\n')        
         if sure=='Yes':
-          del self.name
-          del self.num_pieces
-          del self.cost_per_piece
-          del self.subtotals
+          self.name=[]
+          self.num_pieces=[]
+          self.cost_per_piece=[]
+          self.subtotals=[]
         
         elif sure=='No':
             self.view_inventory()
