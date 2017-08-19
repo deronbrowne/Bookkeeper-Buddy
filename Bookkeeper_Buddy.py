@@ -1,6 +1,3 @@
-import My_Projects
-import Inventory
-
 state='on' #'state' is supposed to represent the app/program being tuned on or accessed
 print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
@@ -24,6 +21,7 @@ while state=='on':
 # Inventory actions
 ###############################################################################
     while action=='Inventory':
+        import Inventory
         
         options=['Create', 'Edit', 'View', 'Save & Exit'] #create list with available options
         print '\n'
@@ -43,18 +41,6 @@ while state=='on':
         if query=='Create': #as long as user wants to create an inventory
             a=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name
             Inventory.inventory.add_item(a) #add items
-            
-            #ask for a new choice & check
-#            print '\n'
-#            print '\n'.join(options)
-#            query=raw_input('What would you like to do?\n'
-#            '\n')
-#
-#            while query not in options:
-#                print '\n'.join(options)
-#                query=raw_input("I didn't get that. Choose one of the options:\n"
-#                '\n')
-        
         
         #Edit
         ##################################################################
@@ -102,27 +88,47 @@ while state=='on':
                     pass         
             #--------------------------------------#
             elif sub_query=='Save & Exit':
-                pass
+                #allows user to choose which part of their records to access
+                choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+                print '\n'
+                print '\n'.join(choices)
+                action=raw_input('Pick an option:\n'
+                                '\n')
+            
+                #catch all    
+                while action not in choices:
+                    print '\n'
+                    print '\n'.join(choices)
+                    action=raw_input("I didn't get that. Pick an option:\n"
+                                    '\n')
         
         #View                                             
         ########################################################################
         if query=='View':
             sub_options=['Items','Inventory','Done']
             print '\n'.join(sub_options)
-            print '\n'
-            sub_query=raw_input('What would you like to do?\n'
+            
+            sub_query=raw_input('What would you like to view?\n'
             '\n')
 
             while sub_query not in sub_options:
                 print '\n'.join(sub_options)
                 sub_query=raw_input("I didn't get that. Choose one of the options:\n"
                 '\n')
-            #---------------------------------------#    
+            #---------------------------------------#            
             if sub_query=='Inventory':
-                Inventory.inventory.view_inventory(a)
+                if Inventory.inventory.name==[]:
+                    print 'Your inventory is empty. Add some items!'
+                    pass                
+                else:
+                    Inventory.inventory.view_inventory(a)
             #---------------------------------------#
             elif sub_query=='Items':
-                Inventory.inventory.view_item(a)
+                if Inventory.inventory.name==[]:
+                    print 'Your inventory is empty. Add some items!'
+                    pass                
+                else:
+                    Inventory.inventory.view_item(a)
             #---------------------------------------#
             elif sub_query=='Done':
                 pass
@@ -130,13 +136,25 @@ while state=='on':
         #Save & Exit
         ######################################################################
         if query=='Save & Exit':
-                pass  
-            
+            #allows user to choose which part of their records to access
+            choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+            print '\n'
+            print '\n'.join(choices)
+            action=raw_input('Pick an option:\n'
+                            '\n')
+        
+            #catch all    
+            while action not in choices:
+                print '\n'
+                print '\n'.join(choices)
+                action=raw_input("I didn't get that. Pick an option:\n"
+                                '\n')
             
 ###############################################################################
 # Project actions
 ###############################################################################   
     while action=='Projects':
+        import My_Projects
         #ask user what he'd like to do. Choose from the options
         options=['Create','Edit','View','Delete','Exit']
         print '\n'.join(options)
