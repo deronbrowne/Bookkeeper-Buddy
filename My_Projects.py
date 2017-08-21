@@ -22,6 +22,7 @@ class my_projects:
     #lists to record information about the profit
     percent_profit=[]
     profit=[]
+    choice = ['Yes', 'No']  
     
 #####################################################################################
 #handling project items
@@ -34,29 +35,33 @@ class my_projects:
             self.item_count.append(float(raw_input('How many are you adding?\n')))
             a=self.item_cost[len(self.item_cost)-1] #grabs the value of the last added item
             b=self.item_count[len(self.item_count)-1] #grabs the count of the last added item
-            self.item_subtotal.append(a*b) #calculates the total cost for all of a particular item
+            self.item_subtotal.append(a*b) #calculates the total cost for all of a particular item          
+            print '\n'.join(self.choice)
             add_another=raw_input('Would you like to add another item?\n'
-            '"Yes"/"No"\n'
             '\n')
-            while add_another!='Yes' or add_another!='No': #catch all
+            while add_another not in self.choice: #catch all
                 print "Sorry, that isn't an option.\n"
+                print '\n'.join(self.choice)
                 add_another=raw_input('Would you like to add another item?\n'
-                '"Yes"/"No"\n'
                 '\n')
         
     def view_items(self): #view all the information on project items
         x=len(self.items)-1
-        for index in range(1,x):
-            print self.items[index], self.item_cost[index], self.item_count[index], self.item_subtotal[index]
+        for index in xrange(1,x):
+            print self.items[index]
+            print self.item_cost[index]
+            print self.item_count[index]
+            print self.item_subtotal[index]
+            print '\n'
         print 'Subtotal for this project = $'+sum(self.item_subtotal) #total value of all the items in the project
         
     def delete_items(self):
         delete_another='Yes'
         while delete_another=='Yes':#allows user to delete multiple items
-            print self.items #shows user the available options
+            print '\n'.join(self.items) #shows user the available options
             a=raw_input('Which item would you like to delete?\n') #asks for a choice
             while a not in self.items: #catch all
-                print self.items
+                print '\n'.join(self.items)
                 a=raw_input("Sorry that item isn't part of your project\n"
                             "Which item would you like to delete?\n"
                            "\n")         
@@ -64,38 +69,41 @@ class my_projects:
             print self.items[x]
             print self.item_cost[x]
             print self.item_count[x]
-            print self.item_subtotal[x]     
-            confirm=raw_input('Are you sure? Yes/No\n'
+            print self.item_subtotal[x]
+            print '\n'
+            print '\n'.join(self.choice)
+            confirm=raw_input('Are you sure?\n'
                                 '\n')
-            while confirm!='Yes' or confirm!='No': #catch all
+            while confirm not in self.choice: #catch all
+                print '\n'.join(self.choice)
                 confirm=raw_input("I didn't quite catch that. Are you sure?\n"
-                '"Yes"/"No"\n'
                 '\n')                
             if confirm=='Yes': #deletes item and associated information if choice is 'Yes'
                 del self.items[x]
                 del self.item_cost[x]
                 del self.item_count[x]
                 del self.item_subtotal[x]
+                print '\n'.join(self.choice)
                 delete_another=raw_input('Would you like to delete another item?\n'
-                                            'Yes/No \n'
                                             '\n')
-                while delete_another!='Yes' or delete_another!='No': #catch all
+                while delete_another not in self.choice: #catch all
                     print "Sorry, that isn't an option.\n"
+                    print '\n'.join(self.choice)
                     delete_another=raw_input('Would you like to delete another item?\n'
-                    '"Yes"/"No"\n'
                     '\n')                                            
             elif confirm=='No': #shows user that item was not deleted if the choice is 'No'
                 print self.items[x]
                 print self.item_cost[x]
                 print self.item_count[x]
                 print self.item_subtotal[x]
+                print '\n'
+                print '\n'.join(self.choice)
                 delete_another=raw_input('Would you like to delete another item?\n'
-                                            'Yes/No \n'
                                             '\n')
-                while delete_another!='Yes' or delete_another!='No': #catch all
+                while delete_another not in self.choice: #catch all
                     print "Sorry, that isn't an option.\n"
+                    print '\n'.join(self.choice)
                     delete_another=raw_input('Would you like to delete another item?\n'
-                    '"Yes"/"No"\n'
                     '\n')                  
 #####################################################################################
 #handling overheads
@@ -105,16 +113,24 @@ class my_projects:
         while add_another=='Yes':
             self.overheads.append(raw_input('What are you adding?\n'))
             self.overhead_cost.append(float(raw_input('How much does it cost?\n')))
+            print '\n'.join(self.choice)
             add_another=raw_input('Would you like to add another?\n'
-                                    'Yes/No\n'
                                     '\n')
+            while add_another not in self.choice:
+                print "Sorry, that isn't an option.\n"
+                print '\n'.join(self.choice)
+                add_another=raw_input('Would you like to add another?\n'
+                                        '\n')  
+                
         if add_another=='No':
             self.view_overheads()
         
     def view_overheads(self,a):#view all the information on overheads
         x=len(self.overheads)-1
         for index in range(1,x):
-            print self.overheads[index], self.overhead_cost[index] #shows each overhead and the associated cost
+            print self.overheads[index]
+            print self.overhead_cost[index]
+            print '\n'#shows each overhead and the associated cost
         print 'Total overhead = ' + sum(self.overhead_cost) #shows total cost of overheads
         
     def delete_overhead(self):
@@ -123,41 +139,45 @@ class my_projects:
             self.view_overheads() #shows user the available options
             a=raw_input('Which item would you like to delete?\n') #asks for a choice
             while a not in self.overheads: #catch all
-                print self.overheads
+                self.view_overheads()
                 a=raw_input("Sorry that overhead isn't part of your project\n"
                             "Which overhead would you like to delete?\n"
                            "\n") 
-        x=raw_input('What date would you like to delete?\n')
-        print self.overheads[x]
-        print self.overhead_cost[x]
-        confirm=raw_input('Are you sure?\n'
-                            '"Yes"/"No"\n'
-                            '\n')
-        while confirm!='Yes' or confirm!='No': #catch all
-            confirm=raw_input("I didn't quite catch that. Are you sure? Yes/No\n"
-                                "\n")                
-        if confirm=='Yes': #deletes item and associated information if choice is 'Yes'
-            del self.overheads[x]
-            del self.overhead_cost[x]
-            delete_another=raw_input('Would you like to delete another item?\n'
-                                        '"Yes"/"No"\n'
-                                        '\n')
-            while delete_another!='Yes' or delete_another!='No': #catch all
-                print "Sorry, that isn't an option.\n"
-                delete_another=raw_input('Would you like to delete another item?\n'
-                '"Yes"/"No"\n'
-                '\n')             
-        elif confirm=='No': #shows user that item was not deleted if the choice is 'No'
+            x=self.overheads.index(a)
             print self.overheads[x]
             print self.overhead_cost[x]
-            delete_another=raw_input('Would you like to delete another item?\n'
-                                        '"Yes"/"No"\n'
-                                        '\n')
-            while delete_another!='Yes' or delete_another!='No': #catch all
-                print "Sorry, that isn't an option.\n"
+            print '\n'
+            print '\n'.join(self.choice)
+            confirm=raw_input('Are you sure?\n'
+                            '\n')
+            while confirm not in self.choice: #catch all
+                print '\n'.join(self.choice)
+                confirm=raw_input("I didn't quite catch that. Are you sure? Yes/No\n"
+                                    "\n")                
+            if confirm=='Yes': #deletes item and associated information if choice is 'Yes'
+                del self.overheads[x]
+                del self.overhead_cost[x]
+                print '\n'
+                print '\n'.join(self.choice)                
                 delete_another=raw_input('Would you like to delete another item?\n'
-                '"Yes"/"No"\n'
-                '\n') 
+                                            '\n')
+                while delete_another not in self.choice: #catch all
+                    print "Sorry, that isn't an option.\n"
+                    print '\n'
+                    print '\n'.join(self.choice)
+                    delete_another=raw_input('Would you like to delete another item?\n'
+                    '\n')             
+            elif confirm=='No': #shows user that item was not deleted if the choice is 'No'
+                print self.overheads[x]
+                print self.overhead_cost[x]
+                delete_another=raw_input('Would you like to delete another item?\n'
+                                            '\n')
+                while delete_another not in self.choice: #catch all
+                    print "Sorry, that isn't an option.\n"
+                    print '\n'
+                    print '\n'.join(self.choice)
+                    delete_another=raw_input('Would you like to delete another item?\n'
+                    '\n')             
                 
 #####################################################################################
 #handling hours worked and salary
