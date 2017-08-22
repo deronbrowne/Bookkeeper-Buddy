@@ -1,4 +1,4 @@
-def check_input(check):
+def yes_no(check):
 	str.lower(check)
 	choice=['yes','no']
  	print '\n'.join(choice)
@@ -11,8 +11,7 @@ def check_input(check):
 		return check
 
 
-#For edit_item_choice
-def edit_item_choice(edit):
+def edit_item_check(edit):
 	str.lower(edit)
 	options=['name','quantity','price']
 	print '\n'.join(options)
