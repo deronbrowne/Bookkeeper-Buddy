@@ -1,40 +1,25 @@
 state='on' #'state' is supposed to represent the app/program being tuned on or accessed
 print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
+import User_input_check
 
 while state=='on':
     #allows user to choose which part of their records to access
-    choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
-    print '\n'
-    print '\n'.join(choices)
+    print '\n'.join(User_input_check.main_choices_check.choices) #print list of available options
     action=raw_input('Pick an option:\n'
                     '\n')
-
-    #catch all    
-    while action not in choices:
-        print '\n'
-        print '\n'.join(choices)
-        action=raw_input("I didn't get that. Pick an option:\n"
-                        '\n')
+    User_input_check.main_choices_check(action)
         
 ###############################################################################
 # Inventory actions
 ###############################################################################
     while action=='Inventory':
         import Inventory
-        
-        options=['Create', 'Edit', 'View', 'Save & Exit'] #create list with available options
-        print '\n'
-        print '\n'.join(options) #display list members each on a new line
+        print '\n'.join(User_input_check.inventory_choices_check.options) #print list of available options
         query=raw_input('What would you like to do?\n' #ask for user choice
         '\n')
-        
         #catch all
-        while query not in options:
-            print '\n'
-            print '\n'.join(options)
-            query=raw_input("I didn't get that. Choose one of the options:\n"
-            '\n')
+        User_input_check.inventory_choices_check(query)
         
         #Create
         ##################################################################
@@ -46,15 +31,12 @@ while state=='on':
         ##################################################################
         if query=='Edit':
             #ask for user choice & check
-            sub_options=['Add','Change','Delete','Save & Exit']
-            print '\n'
-            print '\n'.join(sub_options)
+            print '\n'.join(User_input_check.edit_inventory_check.sub_options) #print list ofavailable options
             sub_query=raw_input('What would you like to do?\n'
-            '\n')
-            while sub_query not in sub_options:
-                print '\n'.join(sub_options)
-                sub_query=raw_input("I didn't get that. Choose one of the options:\n"
-                '\n')
+                                '\n')
+            #catch all
+            User_input_check.edit_inventory_check(sub_query)
+            
             #------------------------------------#
             if sub_query=='Add':
                 Inventory.inventory.add_item(a)
@@ -66,16 +48,11 @@ while state=='on':
             #------------------------------------#    
             elif sub_query== 'Delete':
                 #asks user which inventory characteristic he would like to delete
-                sub_sub_options=['Items', 'Inventory', 'Done']
-                print'\n'
-                print '\n'.join(sub_sub_options)                                
+                print '\n'.join(User_input_check.edit_inventory_delete_check.sub_sub_options) #print list of available options                            
                 sub_sub_query=raw_input('What are you deleting?\n'
                                    '\n')
                 #catch all
-                while sub_sub_query not in sub_sub_options:
-                    print '\n'.join(sub_sub_options)                                
-                    sub_sub_query=raw_input('What are you deleting?\n'
-                                       '\n')
+                User_input_check.edit_inventory_delete_check(sub_sub_query)
                 
                 if sub_sub_query=='Items':
                     Inventory.inventory.delete_item(a)
@@ -88,33 +65,22 @@ while state=='on':
                     pass         
             #--------------------------------------#
             elif sub_query=='Save & Exit':
-                #allows user to choose which part of their records to access
-                choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
-                print '\n'
-                print '\n'.join(choices)
-                action=raw_input('Pick an option:\n'
+                print '\n'.join(User_input_check.inventory_choices_check.options) #print list of available options
+                query=raw_input('What would you like to do?\n' #ask for user choice
                                 '\n')
-            
-                #catch all    
-                while action not in choices:
-                    print '\n'
-                    print '\n'.join(choices)
-                    action=raw_input("I didn't get that. Pick an option:\n"
-                                    '\n')
+                #catch all
+                User_input_check.inventory_choices_check(query)
         
         #View                                             
         ########################################################################
         if query=='View':
-            sub_options=['Items','Inventory','Done']
-            print '\n'.join(sub_options)
+            #allows user to choose which part of their records to access
+            print '\n'.join(User_input_check.view_inventory_check.sub_options) #print list o
+            sub_query=raw_input('Pick an option:\n'
+                            '\n')
+            #catch all
+            User_input_check.view_inventory_check(sub_query)
             
-            sub_query=raw_input('What would you like to view?\n'
-            '\n')
-
-            while sub_query not in sub_options:
-                print '\n'.join(sub_options)
-                sub_query=raw_input("I didn't get that. Choose one of the options:\n"
-                '\n')
             #---------------------------------------#            
             if sub_query=='Inventory':
                 if Inventory.inventory.name==[]:
@@ -137,18 +103,12 @@ while state=='on':
         ######################################################################
         if query=='Save & Exit':
             #allows user to choose which part of their records to access
-            choices = ['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
-            print '\n'
-            print '\n'.join(choices)
-            action=raw_input('Pick an option:\n'
+            print '\n'.join(User_input_check.main_choices_check.choices) #print list of available options
+            action=raw_input('Pick an option:\n' #ask for user choice
                             '\n')
-        
-            #catch all    
-            while action not in choices:
-                print '\n'
-                print '\n'.join(choices)
-                action=raw_input("I didn't get that. Pick an option:\n"
-                                '\n')
+            #catch all
+            User_input_check.main_choices_check(action)
+            
             
 ###############################################################################
 # Project actions
