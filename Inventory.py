@@ -20,7 +20,7 @@ class inventory:
     def add_item(self): #adds an item to the list by saving the name, count, price and 
                         #subtotal of the addition
         check='Yes'
-        while check=='Yes':
+        while check=='yes':
            self.add_name(raw_input('What are you adding? '))
            self.add_num(float(raw_input('How many? ')))
            self.add_cost(float(raw_input('Cost per item? ')))
@@ -30,19 +30,11 @@ class inventory:
            c=self.cost_per_piece[x-1]
            self.subtotals.append(b*c)
            
-           choice=['Yes','No']
-           print '\n'.join(choice)
-           print '\n'
            check=raw_input('Would you like to add another item?\n'
                             '\n')
-           while check not in choice:
-               print "Sorry, I didn't get that. Try again"
-               print '\n'.join(choice)
-               print '\n'                
-               check=raw_input('Would you like to add another item?\n'
-                               '\n')    
+           User_input_check.check_input(check)  
                
-        if check=='No':
+        if check=='no':
             pass
         
     def view_inventory(self):   
@@ -56,8 +48,8 @@ class inventory:
         print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
 
     def view_item(self): 
-        check='Yes'
-        while check=='Yes':
+        check='yes'
+        while check=='yes':
             print self.name #shows user the names of all the options he can choose from
             b=raw_input('What would you like to view?\n'
                                        '\n')
@@ -74,22 +66,14 @@ class inventory:
             print 'Subtotal: ' + str(self.subtotals[x])
             check=raw_input('Would you like to view another item?\n'
                                    '\n')
-            choice=['Yes','No']
-            print '\n'.join(choice)
-            print '\n'            
-            while check not in choice:
-                print "Sorry, I didn't get that. Try again"
-                print '\n'.join(choice)
-                print '\n'
-                check=raw_input('Would you like to view another item?\n'
-                        '\n')
+            User_input_check.check_input(check)  
                 
-        if check=='No':
+        if check=='no':
             pass
 
     def edit_item(self):
-        check='Yes'
-        while check=='Yes': #while the user wants to keep editing, keep executing the edit code
+        check='yes'
+        while check=='yes': #while the user wants to keep editing, keep executing the edit code
             print '\n'
             print '\n'.join(self.name) #shows user the names of all the options he can choose from
             b=raw_input('What would you like to edit?\n'
@@ -101,8 +85,8 @@ class inventory:
                 b=raw_input('What would you like to edit?\n'
                                            '\n')#user chooses an option from the list of item names
             
-            done='No'
-            while done=='No':                            
+            done='no'
+            while done=='no':                            
                 x=self.name.index(b) #index recorded
                 #print the information that is about to be changed
                 print '\n'
@@ -112,31 +96,25 @@ class inventory:
                 print 'Subtotal: '+ str(self.subtotals[x])
                 
                 
-                options=['Name','Quantity','Price']
-                print '\n'.join(options)
+                print '\n'.join(User_input_check.edit_item_choice.options)
                 print '\n'
                 edit=raw_input('What would you like to change?\n'
                                '\n') #user chooses which part of the information he would like to edit
                 #catch all
-                while edit not in options:
-                    print "I'm sorry, that isn't a recorded property \n"
-                    print '\n'.join(options)
-                    print '\n'
-                    edit=raw_input('What would you like to change?\n'
-                               '\n') #user chooses which part of the information he would like to edit    
+                User_input_check.edit_item_choice(edit)     
                 
                 #depending on user response, a different characteristic (item in relevant list) will be changed                    
-                if edit=='Name':
+                if edit=='name':
                     self.name[x]=raw_input('What are you changing the name to?\n'
                                           '\n')    
                     b=self.name[x]
                                   
-                elif edit=='Quantity':
+                elif edit=='quantity':
                     self.num_pieces[x]=float(raw_input('What is the new quantity?\n'
                                           '\n'))
                     self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
 
-                elif edit=='Price':
+                elif edit=='price':
                     self.cost_per_piece[x]=float(raw_input('What is the new price?\n'
                                           '\n'))
                     self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
@@ -144,27 +122,15 @@ class inventory:
                                            
                 check=raw_input('Are you done with this item?\n'
                                 '\n')
-                choice=['Yes','No']
-                while check not in choice: #catch all
-                    print "Sorry, I didn't get that. Try again"
-                    print '\n'.join(choice)
-                    print '\n'                    
-                    check=raw_input('Would you like to change something else about this item?\n'
-                                    '\n')      
+                User_input_check.check_input(check)      
 
-            choice=['Yes','No']
             check=raw_input('Would you like to edit another item?\n' #when user is done with an item, he may move on to editing another
                                     '\n')
-            while check not in choice:
-                print "Sorry, I didn't get that. Try again"
-                print '\n'.join(choice)
-                print '\n'
-                check=raw_input('Would you like to edit another item?\n'
-                                '\n')                       
+            User_input_check.check_input(check)                       
     
     def delete_item(self):
-        check='Yes'
-        while check=='Yes':
+        check='yes'
+        while check=='yes':
             print self.name #shows user the names of all the options he can choose from
             b=raw_input('What would you like to delete?\n'
                                            '\n')#user chooses an option from the list of item names 
@@ -181,61 +147,38 @@ class inventory:
             print 'Subtotal: ' + str(self.subtotals[x])
             print '\n'
             
-            choice=['Yes','No']
-            print '\n'.join(choice)
-            print '\n'
             check=raw_input('Are you sure?\n'
                            '\n')
-            while check not in choice:
-                print "Sorry I didn't get that. Try again \n"
-                print '\n'.join(choice)
-                print '\n' 
-                check=raw_input("Are you sure you want to delete this?\n"
-               '\n')
+            User_input_check.check_input(check)  
             
-            if check=='Yes':
+            if check=='yes':
                 del self.name[x]
                 del self.cost_per_piece[x]
                 del self.num_pieces[x]
                 del self.subtotals[x]
-            elif check=='No': #shows user that nothing has been changed
+            elif check=='no': #shows user that nothing has been changed
                 print 'Name: ' + self.name[x]
                 print 'Cost: ' + str(self.cost_per_piece[x])
                 print 'Quantity: ' + str(self.num_pieces[x])
                 print 'Subtotal: ' + str(self.subtotals[x])
                 print '\n'                
-                
-            choice=['Yes','No']
-            print '\n'.join(choice)
-            print '\n'
+
             check=raw_input('Would you like to keep deleting?\n'
                     '\n')
-            while check not in choice:
-                print "Sorry, I didn't get that. Try again"
-                print '\n'.join(choice)
-                print '\n'
-                check=raw_input("Would you like to keep deleting?\n"
-                                        '\n')                
+            User_input_check.check_input(check)              
                                    
     def delete_inventory(self):
-        choice=['Yes','No']
-        print '\n'.join(choice)
-        print '\n'
-        check=raw_input("Are you sure? 'Yes'/'No' \n"
+        check=raw_input("Are you sure?\n"
                         '\n')
-        while check not in choice: #while loop to catch errors
-            print "I'm sorry, I didn't get that."
-            print '\n'.join(choice)
-            print '\n'
-            check=raw_input('Are you sure you want to delete your inventory?\n'
-                                       '\n')        
-        if check=='Yes':
+        User_input_check.check_input(check) 
+        
+        if check=='yes':
           self.name=[]
           self.num_pieces=[]
           self.cost_per_piece=[]
           self.subtotals=[]
         
-        elif check=='No':
+        elif check=='no':
             self.view_inventory()
         
         
