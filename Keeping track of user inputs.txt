@@ -1,0 +1,154 @@
+################################
+#Inventory
+################################
+
+#add_item
+##########
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Would you like to add another item?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again"
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input()
+
+#view_item
+###########
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Would you like to view another item?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again"
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Would you like to view another item?\n'
+			'\n')
+
+ 
+#edit_item
+###########
+
+#-------------------
+options=['Name','Quantity','Price']
+print '\n'.join(options)
+print '\n'
+edit=raw_input('What would you like to change?\n'
+		'\n')
+while edit not in options:
+	print "I'm sorry, that isn't a recorded property \n"
+	print '\n'.join(options)
+	print '\n'
+	edit=raw_input('What would you like to change?\n'
+			'\n')
+
+#-----------------
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Are you done with this item?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again"
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Would you like to change something else about this item?\n'
+			'\n')
+
+#------------------
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Would you like to edit another item?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again."
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Would you like to edit another item?\n'
+			'\n')
+
+
+#delete_item
+#############
+
+#------------------
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Are you sure?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again."
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Are you sure you want to delete this?\n'
+			'\n')
+
+
+#-------------------
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Would you like to keep deleting?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again."
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Would you like to keep deleting?\n'
+			'\n')
+
+
+#delete_inventory
+##################
+
+#------------------
+choice=['Yes','No']
+print '\n'.join(choice)
+print '\n'
+check=raw_input('Are you sure?\n'
+		'\n')
+while check not in choice:
+	print "Sorry, I didn't get that. Try again."
+	print '\n'.join(choice)
+	print '\n'
+	check=raw_input('Are you sure you want to delete your inventory?\n'
+			'\n')
+
+
+
+################################
+#Bookkeeper_Buddy
+################################
+choices=['Inventory', 'Projects', 'Restock', 'Set Goal', 'Quit']
+action=raw_input('Pick an option:\n'
+
+#------------
+#Inventory
+#------------
+options=['Create', 'Edit', 'View', 'Save & Exit']
+query=raw_input('What would you like to do?\n'
+
+	#---------
+	#Edit
+	#---------
+	sub_options=['Add','Change','Delete','Save & Exit']
+	sub_query=raw_input('What would you like to do?\n'
+
+		#---------
+		#Delete
+		#---------
+		sub_sub_options=['Items', 'Inventory', 'Done']
+		sub_sub_query=raw_input('What are you deleting?\n'
+
+
+	#---------
+	#View
+	#---------
+	sub_options=['Items','Inventory','Done']
+	sub_query=raw_input('What would you like to view?\n'
