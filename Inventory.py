@@ -32,7 +32,7 @@ class inventory:
            
            check=raw_input('Would you like to add another item?\n'
                             '\n')
-           User_input_check.check_input(check)  
+           User_input_check.yes_no(check)  
                
         if check=='no':
             pass
@@ -66,7 +66,7 @@ class inventory:
             print 'Subtotal: ' + str(self.subtotals[x])
             check=raw_input('Would you like to view another item?\n'
                                    '\n')
-            User_input_check.check_input(check)  
+            User_input_check.yes_no(check)  
                 
         if check=='no':
             pass
@@ -96,12 +96,12 @@ class inventory:
                 print 'Subtotal: '+ str(self.subtotals[x])
                 
                 
-                print '\n'.join(User_input_check.edit_item_choice.options)
+                print '\n'.join(User_input_check.edit_item_check.options)
                 print '\n'
                 edit=raw_input('What would you like to change?\n'
                                '\n') #user chooses which part of the information he would like to edit
                 #catch all
-                User_input_check.edit_item_choice(edit)     
+                User_input_check.edit_item_check(edit)     
                 
                 #depending on user response, a different characteristic (item in relevant list) will be changed                    
                 if edit=='name':
@@ -122,11 +122,11 @@ class inventory:
                                            
                 check=raw_input('Are you done with this item?\n'
                                 '\n')
-                User_input_check.check_input(check)      
+                User_input_check.yes_no(check)      
 
             check=raw_input('Would you like to edit another item?\n' #when user is done with an item, he may move on to editing another
                                     '\n')
-            User_input_check.check_input(check)                       
+            User_input_check.yes_no(check)                       
     
     def delete_item(self):
         check='yes'
@@ -149,7 +149,7 @@ class inventory:
             
             check=raw_input('Are you sure?\n'
                            '\n')
-            User_input_check.check_input(check)  
+            User_input_check.yes_no(check)  
             
             if check=='yes':
                 del self.name[x]
@@ -165,12 +165,12 @@ class inventory:
 
             check=raw_input('Would you like to keep deleting?\n'
                     '\n')
-            User_input_check.check_input(check)              
+            User_input_check.yes_no(check)              
                                    
     def delete_inventory(self):
         check=raw_input("Are you sure?\n"
                         '\n')
-        User_input_check.check_input(check) 
+        User_input_check.yes_no(check) 
         
         if check=='yes':
           self.name=[]
