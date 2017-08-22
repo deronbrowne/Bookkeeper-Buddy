@@ -1,5 +1,6 @@
 def check_input(check):
-	choice=['Yes','No']
+	str.lower(check)
+	choice=['yes','no']
  	print '\n'.join(choice)
  	print '\n'
  	while check not in choice:
@@ -12,7 +13,8 @@ def check_input(check):
 
 #For edit_item_choice
 def edit_item_choice(edit):
-	options=['Name','Quantity','Price']
+	str.lower(edit)
+	options=['name','quantity','price']
 	print '\n'.join(options)
 	print '\n'
 	while edit not in options:
