@@ -5,7 +5,8 @@ import User_input_check
 
 while state=='on':
     #allows user to choose which part of their records to access
-    print '\n'.join(User_input_check.main_choices_check.choices) #print list of available options
+    print '\n'    
+    print '\n'.join(User_input_check.choices) #print list of available options
     action=raw_input('Pick an option:\n'
                     '\n')
     User_input_check.main_choices_check(action)
@@ -13,9 +14,10 @@ while state=='on':
 ###############################################################################
 # Inventory actions
 ###############################################################################
-    while action=='Inventory':
+    while action=='inventory':
         import Inventory
-        print '\n'.join(User_input_check.inventory_choices_check.options) #print list of available options
+        print '\n'
+        print '\n'.join(User_input_check.options) #print list of available options
         query=raw_input('What would you like to do?\n' #ask for user choice
         '\n')
         #catch all
@@ -23,49 +25,52 @@ while state=='on':
         
         #Create
         ##################################################################
-        if query=='Create': #as long as user wants to create an inventory
+        if query=='create': #as long as user wants to create an inventory
             a=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name
             Inventory.inventory.add_item(a) #add items
         
         #Edit
         ##################################################################
-        if query=='Edit':
+        if query=='edit':
             #ask for user choice & check
-            print '\n'.join(User_input_check.edit_inventory_check.sub_options) #print list ofavailable options
+            print '\n'
+            print '\n'.join(User_input_check.sub_options) #print list ofavailable options
             sub_query=raw_input('What would you like to do?\n'
                                 '\n')
             #catch all
             User_input_check.edit_inventory_check(sub_query)
             
             #------------------------------------#
-            if sub_query=='Add':
+            if sub_query=='add':
                 Inventory.inventory.add_item(a)
 
             #-----------------------------------#
-            elif sub_query=='Change':
+            elif sub_query=='change':
                 Inventory.inventory.edit_item(a) 
        
             #------------------------------------#    
-            elif sub_query== 'Delete':
+            elif sub_query== 'delete':
                 #asks user which inventory characteristic he would like to delete
-                print '\n'.join(User_input_check.edit_inventory_delete_check.sub_sub_options) #print list of available options                            
+                print '\n'                
+                print '\n'.join(User_input_check.sub_sub_options) #print list of available options                            
                 sub_sub_query=raw_input('What are you deleting?\n'
                                    '\n')
                 #catch all
                 User_input_check.edit_inventory_delete_check(sub_sub_query)
                 
-                if sub_sub_query=='Items':
+                if sub_sub_query=='items':
                     Inventory.inventory.delete_item(a)
                     
-                elif sub_sub_query=='Inventory':
+                elif sub_sub_query=='inventory':
                     Inventory.inventory.view_inventory(a)
                     Inventory.inventory.delete_inventory(a)
                     
-                elif sub_sub_query=='Done':
+                elif sub_sub_query=='done':
                     pass         
             #--------------------------------------#
-            elif sub_query=='Save & Exit':
-                print '\n'.join(User_input_check.inventory_choices_check.options) #print list of available options
+            elif sub_query=='save & exit':
+                print '\n'                 
+                print '\n'.join(User_input_check.options) #print list of available options
                 query=raw_input('What would you like to do?\n' #ask for user choice
                                 '\n')
                 #catch all
@@ -73,47 +78,50 @@ while state=='on':
         
         #View                                             
         ########################################################################
-        if query=='View':
+        if query=='view':
             #allows user to choose which part of their records to access
-            print '\n'.join(User_input_check.view_inventory_check.sub_options) #print list o
+            print '\n' 
+            print '\n'.join(User_input_check.sub_sub_options) #print list of available options
             sub_query=raw_input('Pick an option:\n'
-                            '\n')
+                                '\n')
             #catch all
             User_input_check.view_inventory_check(sub_query)
             
             #---------------------------------------#            
-            if sub_query=='Inventory':
+            if sub_query=='inventory':
                 if Inventory.inventory.name==[]:
                     print 'Your inventory is empty. Add some items!'
                     pass                
                 else:
                     Inventory.inventory.view_inventory(a)
             #---------------------------------------#
-            elif sub_query=='Items':
+            elif sub_query=='items':
                 if Inventory.inventory.name==[]:
                     print 'Your inventory is empty. Add some items!'
                     pass                
                 else:
                     Inventory.inventory.view_item(a)
             #---------------------------------------#
-            elif sub_query=='Done':
+            elif sub_query=='done':
                 pass
 
         #Save & Exit
         ######################################################################
-        if query=='Save & Exit':
+        if query=='save & exit':
             #allows user to choose which part of their records to access
-            print '\n'.join(User_input_check.main_choices_check.choices) #print list of available options
+            print '\n'         
+            print '\n'.join(User_input_check.choices) #print list of available options
             action=raw_input('Pick an option:\n' #ask for user choice
                             '\n')
             #catch all
             User_input_check.main_choices_check(action)
+            pass
             
             
 ###############################################################################
 # Project actions
 ###############################################################################   
-    while action=='Projects':
+    while action=='projects':
         import My_Projects
         #ask user what he'd like to do. Choose from the options
         options=['Create','Edit','View','Delete','Exit']
@@ -129,7 +137,7 @@ while state=='on':
 
         #Create
         #######################################################################
-        while query=='Create':# if user wants to create a project
+        while query=='create':# if user wants to create a project
             My_Projects.projects.append(raw_input('Name your project! '))
             My_Projects.instances.append(My_Projects.my_projects()) #my attempt at using user input to initialize an instance
             x=len(My_Projects.instances)-1
@@ -137,7 +145,7 @@ while state=='on':
 
         #Edit
         #######################################################################
-        while query=='Edit': #if user wants to edit something
+        while query=='edit': #if user wants to edit something
             print My_Projects.projects #print options
             which_project=raw_input('Which project are you editing?\n'
             '\n')
@@ -355,6 +363,6 @@ while state=='on':
     while action=='Set Goal':
         print 'Coming soon!'
         
-    if action=='Quit':
+    if action=='quit':
         print 'Goodbye'
         state='off'
