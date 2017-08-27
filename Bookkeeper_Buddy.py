@@ -1,27 +1,23 @@
 state='on' #'state' is supposed to represent the app/program being tuned on or accessed
 print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
-import User_input_check
+import input_check
 
 while state=='on':
     #allows user to choose which part of their records to access
-    print '\n'    
-    print '\n'.join(User_input_check.choices) #print list of available options
-    action=raw_input('Pick an option:\n'
-                    '\n')
-    User_input_check.main_choices_check(action)
+    level=1
+    prompt=('Pick an option')
+    action=input_check.check(level,prompt)
         
 ###############################################################################
 # Inventory actions
 ###############################################################################
     while action=='inventory':
         import Inventory
-        print '\n'
-        print '\n'.join(User_input_check.options) #print list of available options
-        query=raw_input('What would you like to do?\n' #ask for user choice
-        '\n')
-        #catch all
-        User_input_check.inventory_choices_check(query)
+        #allows user to choose which part of their records to access
+        level=2
+        prompt=('What would you like to do')
+        query=input_check.check(level,prompt)
         
         #Create
         ##################################################################
@@ -32,13 +28,10 @@ while state=='on':
         #Edit
         ##################################################################
         if query=='edit':
-            #ask for user choice & check
-            print '\n'
-            print '\n'.join(User_input_check.sub_options) #print list ofavailable options
-            sub_query=raw_input('What would you like to do?\n'
-                                '\n')
-            #catch all
-            User_input_check.edit_inventory_check(sub_query)
+            #allows user to choose which part of their records to access            
+            level=3
+            prompt=('What would you like to do')
+            sub_query=input_check.check(level,prompt)
             
             #------------------------------------#
             if sub_query=='add':
@@ -51,12 +44,9 @@ while state=='on':
             #------------------------------------#    
             elif sub_query== 'delete':
                 #asks user which inventory characteristic he would like to delete
-                print '\n'                
-                print '\n'.join(User_input_check.sub_sub_options) #print list of available options                            
-                sub_sub_query=raw_input('What are you deleting?\n'
-                                   '\n')
-                #catch all
-                User_input_check.edit_inventory_delete_check(sub_sub_query)
+                level=4
+                prompt=('What are you deleting')
+                sub_sub_query=input_check.check(level,prompt)
                 
                 if sub_sub_query=='items':
                     Inventory.inventory.delete_item(a)
@@ -69,23 +59,17 @@ while state=='on':
                     pass         
             #--------------------------------------#
             elif sub_query=='save & exit':
-                print '\n'                 
-                print '\n'.join(User_input_check.options) #print list of available options
-                query=raw_input('What would you like to do?\n' #ask for user choice
-                                '\n')
-                #catch all
-                User_input_check.inventory_choices_check(query)
+                level=2
+                prompt=('What would you like to do')
+                query=input_check.check(level,prompt)
         
         #View                                             
         ########################################################################
         if query=='view':
             #allows user to choose which part of their records to access
-            print '\n' 
-            print '\n'.join(User_input_check.sub_sub_options) #print list of available options
-            sub_query=raw_input('Pick an option:\n'
-                                '\n')
-            #catch all
-            User_input_check.view_inventory_check(sub_query)
+            level=4
+            prompt=('What are you deleting')
+            sub_sub_query=input_check.check(level,prompt)
             
             #---------------------------------------#            
             if sub_query=='inventory':
@@ -109,12 +93,9 @@ while state=='on':
         ######################################################################
         if query=='save & exit':
             #allows user to choose which part of their records to access
-            print '\n'         
-            print '\n'.join(User_input_check.choices) #print list of available options
-            action=raw_input('Pick an option:\n' #ask for user choice
-                            '\n')
-            #catch all
-            User_input_check.main_choices_check(action)
+            level=1
+            prompt=('Pick an option')
+            action=input_check.check(level,prompt)
             pass
             
             
@@ -124,16 +105,9 @@ while state=='on':
     while action=='projects':
         import My_Projects
         #ask user what he'd like to do. Choose from the options
-        options=['Create','Edit','View','Delete','Exit']
-        print '\n'.join(options)
-        query=raw_input('What would you like to do?\n'
-        '\n')
-        
-        #catch all
-        while query not in options:
-            print '\n'.join(options)
-            query=raw_input("That isn't a valid option. What would you like to do?\n"
-            '\n')
+        level=2
+        prompt=('What would you like to do')
+        query=input_check.check(level,prompt)
 
         #Create
         #######################################################################
@@ -146,222 +120,128 @@ while state=='on':
         #Edit
         #######################################################################
         while query=='edit': #if user wants to edit something
-            print My_Projects.projects #print options
-            which_project=raw_input('Which project are you editing?\n'
-            '\n')
-            #catch all
-            while which_project not in My_Projects.projects:
-                print My_Projects.projects
-                which_project=raw_input("That isn't one of your active projects\n"
-                'Which project are you editing?\n'
-                '\n') 
+            level=5
+            prompt=('Which project are you editing')
+            input_check.check(level,prompt)
+            
             
             #asks user what kind of edit he'd like to carry out
-            sub_options=['Add','Change','Delete','Quit']
-            print '\n'.join(sub_options)
-            sub_query=raw_input('How would you like to edit this project:\n'            
-            '\n')
-            #catch all
-            while sub_query not in sub_options:
-                print '\n'.join(sub_options)
-                sub_query=raw_input("That's not a valid option. How would you like to edit this project:\n"            
-                '\n')                
+            level=3
+            prompt=('How would you like to edit this project?')
+            sub_query=input_check.check(level,prompt)
                 
             #executes based on user input
-            if sub_query== 'Add':
+            if sub_query== 'add':
                 #asks user which project characteristic he'd like to add to
-                sub_sub_options=['Project items','Overheads','Hours worked','Done']
-                print sub_sub_options
-                sub_sub_query=raw_input('What are you adding to?\n'
-                                   '\n')
-                #catch all
-                while sub_sub_query not in sub_sub_options:            
-                    print sub_sub_options
-                    sub_sub_query=raw_input("That isn't a valid option. What are you adding to?\n"
-                                       '\n')
+                level=6
+                prompt=('What are you adding to?')
+                sub_sub_query=input_check.check(level,prompt)
+                pass
                 
-            elif sub_query== 'Change':
-                #asks user which project characteristic he would like to change
-                sub_sub_query=raw_input('What are you editing?\n'
-                                   '"Project items"?\n'
-                                   '"Overheads"?\n'
-                                   '"Hours worked"?\n'
-                                   '"Done"\n'
-                                   '\n')
-                #catch all
-                while sub_sub_query!='Project items' or sub_sub_query!='Overheads' or sub_sub_query!='Hours worked' or sub_sub_query!='Done':            
-                    sub_sub_query=raw_input("That's not a valid option. What are you editing?\n"
-                                       '"Project items"?\n'
-                                       '"Overheads"?\n'
-                                       '"Hours worked"?\n'
-                                       '"Done"\n'
-                                       '\n')
+            elif sub_query== 'change':
+                level=6
+                prompt=('What are you changing?')
+                sub_sub_query=input_check.check(level,prompt)
+                pass
                                        
-            elif sub_query== 'Delete':
+            elif sub_query== 'delete':
                 #asks user which project characteristic he would like to delete
-                sub_sub_query=raw_input('What are you deleting?\n'
-                                   '"Project items"?\n'
-                                   '"Overheads"?\n'
-                                   '"Hours worked"?\n'
-                                   '"Done"\n'
-                                   '\n')
-                #catch all
-                while sub_sub_query!='Project items' or sub_sub_query!='Overheads' or sub_sub_query!='Hours worked' or sub_sub_query!='Done':            
-                    sub_sub_query=raw_input("That's not a valid option. What are you deleting?\n"
-                                       '"Project items"?\n'
-                                       '"Overheads"?\n'
-                                       '"Hours worked"?\n'
-                                       '"Done"\n'
-                                       '\n')
+                level=6
+                prompt=('What are you deleting?')
+                sub_sub_query=input_check.check(level,prompt)
+                pass
                
-            elif sub_query== 'Quit':
+            elif sub_query== 'save & exit':
                 #once user is finished editing, ask user what he'd like to do next
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'      
-                '"Delete" a project\n'
-                '"Exit"\n'
-                '\n')
-                #catch all
-                while query!='Create' or query!='Edit' or query!='View' or query!='Delete' or query!='Exit':
-                    query=raw_input("That isn't a valid option. What would you like to do?\n"
-                    '"Create" a project\n'
-                    '"Edit" a project\n'
-                    '"View" a project\n'      
-                    '"Delete" a project\n'
-                    '"Exit"\n'
-                    '\n')  
+                level=2
+                prompt=('What would you like to do?')
+                query=input_check.check(level,prompt)
+                pass  
 
         #View
         #######################################################################
         while query=='View': #ask user to identify which part of the project he'd like to view
-            sub_query=raw_input('Would you like to:\n'
-            '"View item"?\n'
-            '"View overheads"?\n'
-            '"View hours"?\n'
-            '"View profit"?\n'
-            'View the "Project total"?\n'
-            '"Quit"\n'
-            '\n')
-            
-            #catch all
-            while sub_query!='View item' or sub_query!='View overheads' or sub_query!='View hours' or sub_query!='View profit' or sub_query!='Project total' or sub_query!='Quit':
-                sub_query=raw_input("Sorry, I didn't get that. Would you like to:\n"
-                                    '"View item"?\n'
-                                    '"View overheads"?\n'
-                                    '"View hours"?\n'
-                                    '"View profit"?\n'
-                                    'View the "Project total"?\n'
-                                    '"Quit"\n'
-                                    '\n')
+            level=6
+            prompt=('What would you like to view?')
+            sub_query=input_check.check(level,prompt)
+            pass        
 
 # at this point I'd like to be able to reference particular instances of the My_Projects class based on the user defined name for the class. Not sure how to do that.
-            if sub_query== 'View item':
+            if sub_query== 'item':
+                print 'items'
                 pass
-            elif sub_query== 'View overheads':
+            
+            elif sub_query== 'overheads':
                 print 'overheads'
-
-            elif sub_query== 'View hours':
+                pass
+            
+            elif sub_query== 'hours':
                 print 'hours'
-
-            elif sub_query== 'View profit':
+                pass
+            
+            elif sub_query== 'profit':
                 print 'profit'
+                pass
 
-            elif sub_query== 'Project total':
-                print 'total'
-
-            elif sub_query== 'Quit':
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')            
+            elif sub_query== 'done':
+                level=2
+                prompt=('What would you like to do?')
+                query=input_check.check(level,prompt)
+                pass             
 
         #Delete
         #######################################################################
-        while query=='Delete':
-            sub_query=raw_input('Would you like to:\n'
-            '"Delete item"?\n'
-            '"Delete overheads"?\n'
-            '"Delete hours"?\n'
-            '"Delete profit"?\n'
-            '"Quit"\n'
-            '\n')
+        while query=='delete':
+            level=6
+            prompt=('What would you like to delete?')
+            sub_query=input_check.check(level,prompt)
+            pass 
 
-            if sub_query== 'Delete item':
+            if sub_query== 'item':
                 print 'Deleting item'
 
-            elif sub_query== 'Delete overheads':
+            elif sub_query== 'overheads':
                 print 'Deleting overheads'
 
-            elif sub_query== 'Delete hours':
+            elif sub_query== 'hours':
                 print 'Deleting hours'
 
-            elif sub_query== 'Delete profit':
+            elif sub_query== 'profit':
                 print 'Deleting profit'
 
-            elif sub_query== 'Quit':
-                query=raw_input('What would you like to do?\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')
-
-            else:
-                print "Sorry I didnt get that. Try again."
-                sub_query=raw_input('Would you like to:\n'
-                '"Create" a project\n'
-                '"Edit" a project\n'
-                '"View" a project\n'
-                '"Delete" a project\n'
-                '"Save and Exit"\n'
-                '\n')              
+            elif sub_query== 'done':
+                level=2
+                prompt=('What would you like to do?')
+                query=input_check.check(level,prompt)
+                pass  
+           
 
         #Exit without saving
         #######################################################################
         if query=='Exit without saving':
             print "Write code to undo previous actions"
-            action=raw_input('Choose one of the following options:\n'
-            '"Inventory"\n'
-            '"Project"\n'
-            '"Restock"\n'
-            '"Set Goal"\n'
-            '"Quit"\n'
-            '\n')        
+            level=1
+            prompt=('Pick an option')
+            action=input_check.check(level,prompt)      
 
         #Save & Exit
         #######################################################################
         elif query=='Save & Exit':
-            action=raw_input('Choose one of the following options:\n'
-            '"Inventory"\n'
-            '"Project"\n'
-            '"Restock"\n'
-            '"Set Goal"\n'
-            '"Quit"\n'
-            '\n')
-
-        else:
-            print "Sorry I didnt get that. Try again."
-            query=raw_input('What would you like to do?\n'
-            '"Create" a project\n'
-            '"Add" to a project\n'
-            '"Edit" a project\n'
-            '"View" a project\n'
-            '"Delete" a project\n'
-            '"Exit without saving"\n'
-            '"Save and Exit"\n'
-            '\n')            
+            level=1
+            prompt=('Pick an option')
+            action=input_check.check(level,prompt)         
                         
     while action=='Restock':
         print 'Coming soon!'
+        pass
     
     while action=='Set Goal':
         print 'Coming soon!'
+        pass
+    
+    while action=='Sell item':
+        print 'Coming soon!'
+        pass
         
     if action=='quit':
         print 'Goodbye'
