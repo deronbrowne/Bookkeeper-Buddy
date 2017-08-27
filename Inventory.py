@@ -1,3 +1,4 @@
+import input_check
 class inventory:
     #initialize lists that will store information about the inventory
     name = []
@@ -30,12 +31,9 @@ class inventory:
            c=self.cost_per_piece[x-1]
            self.subtotals.append(b*c)
            
-           check=raw_input('Would you like to add another item?\n'
-                            '\n')
-           User_input_check.yes_no(check)  
-               
-        if check=='no':
-            pass
+           level=7
+           prompt= 'Would you like to add another item?'
+           check=input_check.check(level,prompt)
         
     def view_inventory(self):   
         x=len(self.name)
@@ -50,40 +48,26 @@ class inventory:
     def view_item(self): 
         check='yes'
         while check=='yes':
-            print self.name #shows user the names of all the options he can choose from
-            b=raw_input('What would you like to view?\n'
-                                       '\n')
-            while b not in self.name:
-                print '\n'.join(self.name) #shows user the names of all the options he can choose from
-                b=raw_input("I'm sorry, that isn't in your inventory. Try again.\n"
-                            'What would you like to view?\n'
-                            '\n')
+            level=8
+            prompt= 'What would you like to view?'
+            b=input_check.check(level,prompt)
+
             x=self.name.index(b) #user chooses an option; index recorded                                           '\n')                
             #prints all the information associated with an item of the user's choice                
             print 'Name: ' + self.name[x]
             print 'Cost: ' + str(self.cost_per_piece[x])
             print 'Quantity: ' + str(self.num_pieces[x])
             print 'Subtotal: ' + str(self.subtotals[x])
-            check=raw_input('Would you like to view another item?\n'
-                                   '\n')
-            User_input_check.yes_no(check)  
-                
-        if check=='no':
-            pass
+            level=7
+            prompt= 'Would you like to view another item?'
+            check=input_check.check(level,prompt) 
 
     def edit_item(self):
         check='yes'
         while check=='yes': #while the user wants to keep editing, keep executing the edit code
-            print '\n'
-            print '\n'.join(self.name) #shows user the names of all the options he can choose from
-            b=raw_input('What would you like to edit?\n'
-                                           '\n')#user chooses an option from the list of item names 
-            while b not in self.name: #while loop to catch errors
-                print "I'm sorry, that item isn't in your inventory \n"
-                print '\n'.join(self.name)
-                print '\n'
-                b=raw_input('What would you like to edit?\n'
-                                           '\n')#user chooses an option from the list of item names
+            level=8
+            prompt= 'What would you like to edit?'
+            b=input_check.check(level,prompt)
             
             done='no'
             while done=='no':                            
@@ -96,12 +80,9 @@ class inventory:
                 print 'Subtotal: '+ str(self.subtotals[x])
                 
                 
-                print '\n'.join(User_input_check.edit_item_check.options)
-                print '\n'
-                edit=raw_input('What would you like to change?\n'
-                               '\n') #user chooses which part of the information he would like to edit
-                #catch all
-                User_input_check.edit_item_check(edit)     
+                level=9
+                prompt= 'What would you like to change?'
+                edit=input_check.check(level,prompt)   
                 
                 #depending on user response, a different characteristic (item in relevant list) will be changed                    
                 if edit=='name':
@@ -120,25 +101,21 @@ class inventory:
                     self.subtotals[x]=self.num_pieces[x]*self.cost_per_piece[x]
     
                                            
-                check=raw_input('Are you done with this item?\n'
-                                '\n')
-                User_input_check.yes_no(check)      
+                level=7
+                prompt= 'Are you done wih this item?'
+                done=input_check.check(level,prompt)     
 
-            check=raw_input('Would you like to edit another item?\n' #when user is done with an item, he may move on to editing another
-                                    '\n')
-            User_input_check.yes_no(check)                       
+            level=7
+            prompt= 'Would you like to delete another item?'
+            check=input_check.check(level,prompt)                       
     
     def delete_item(self):
         check='yes'
         while check=='yes':
-            print self.name #shows user the names of all the options he can choose from
-            b=raw_input('What would you like to delete?\n'
-                                           '\n')#user chooses an option from the list of item names 
-            while b not in self.name: #while loop to catch errors
-                print "I'm sorry, that item isn't in your inventory"
-                print self.name
-                b=raw_input('What would you like to delete?\n'
-                                           '\n')#user chooses an option from the list of item names                             
+            level=8
+            prompt= 'What would you like to delete?'
+            b=input_check.check(level,prompt)
+                             
             #grab index of item to be deleted; print and check before deleting
             x=self.name.index(b) 
             print 'Name: ' + self.name[x]
@@ -147,15 +124,16 @@ class inventory:
             print 'Subtotal: ' + str(self.subtotals[x])
             print '\n'
             
-            check=raw_input('Are you sure?\n'
-                           '\n')
-            User_input_check.yes_no(check)  
+            level=7
+            prompt= 'Are you sure?'
+            check=input_check.check(level,prompt)
             
             if check=='yes':
                 del self.name[x]
                 del self.cost_per_piece[x]
                 del self.num_pieces[x]
                 del self.subtotals[x]
+                
             elif check=='no': #shows user that nothing has been changed
                 print 'Name: ' + self.name[x]
                 print 'Cost: ' + str(self.cost_per_piece[x])
@@ -163,14 +141,14 @@ class inventory:
                 print 'Subtotal: ' + str(self.subtotals[x])
                 print '\n'                
 
-            check=raw_input('Would you like to keep deleting?\n'
-                    '\n')
-            User_input_check.yes_no(check)              
+            level=7
+            prompt= 'Would you like to keep deleting?'
+            check=input_check.check(level,prompt)           
                                    
     def delete_inventory(self):
-        check=raw_input("Are you sure?\n"
-                        '\n')
-        User_input_check.yes_no(check) 
+        level=7
+        prompt= 'Are you sure?'
+        check=input_check.check(level,prompt)
         
         if check=='yes':
           self.name=[]
