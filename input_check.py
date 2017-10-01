@@ -3,7 +3,7 @@ def check(level,prompt):
     a=['inventory', 'projects', 'restock', 'set goal', 'quit']
     b=['create', 'edit', 'view', 'save & exit']
     c=['add','change','delete','save & exit']	
-    d=['summary', 'items', 'done']
+    d=['inventory', 'items', 'done']
     import My_Projects
     e=My_Projects.projects
     f=['items','overheads','hours','profit','done']
