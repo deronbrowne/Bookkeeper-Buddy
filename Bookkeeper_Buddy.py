@@ -22,12 +22,22 @@ while state=='on':
         #Create
         ##################################################################
         if query=='create': #as long as user wants to create an inventory
-            a=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name
-            Inventory.inventory.add_item(a) #add items
+            new_name=raw_input('Name this inventory! \n'
+                                            '\n')
+            Inventory.inventory_record[new_name]=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name       
+            names=Inventory.inventory_record.keys()
+            a=names.index(new_name)
+            Inventory.inventory_record[Inventory.inventory_record.keys()[a]].add_item() #add items
         
         #Edit
         ##################################################################
-        if query=='edit':
+        elif query=='edit':
+            #allows user to choose which of his inventories he'd like to edit
+            level=13
+            prompt='Which inventory would you like to edit?'
+            key=input_check.check(level,prompt) #saves the name of the inventory the user wants to access
+            a=Inventory.inventory_record.keys().index(key) #saves the index of the key the user is accessing
+            
             #allows user to choose which part of their records to access            
             level=3
             prompt=('What would you like to do')
@@ -35,11 +45,11 @@ while state=='on':
             
             #------------------------------------#
             if sub_query=='add':
-                Inventory.inventory.add_item(a)
+                Inventory.inventory_record[key].add_item()
 
             #-----------------------------------#
             elif sub_query=='change':
-                Inventory.inventory.edit_item(a) 
+                Inventory.inventory_record[key].edit_item() 
        
             #------------------------------------#    
             elif sub_query== 'delete':
@@ -49,11 +59,14 @@ while state=='on':
                 sub_sub_query=input_check.check(level,prompt)
                 
                 if sub_sub_query=='items':
-                    Inventory.inventory.delete_item(a)
-                    
+                    if Inventory.inventory_record[key].name==[]:
+                        print 'Your inventory is empty. Add some items!'
+                        pass                
+                    else:                    
+                        Inventory.inventory_record[key].delete_item()
+                        
                 elif sub_sub_query=='inventory':
-                    Inventory.inventory.view_inventory(a)
-                    Inventory.inventory.delete_inventory(a)
+                    Inventory.inventory_record[key].delete_inventory(key)
                     
                 elif sub_sub_query=='done':
                     pass         
@@ -65,33 +78,39 @@ while state=='on':
         
         #View                                             
         ########################################################################
-        if query=='view':
+        elif query=='view':
+            #allows user to choose which of his inventories he'd like to view
+            level=13
+            prompt='Which inventory would you like to view?'
+            key=input_check.check(level,prompt) #saves the name of the inventory the user wants to access
+            a=Inventory.inventory_record.keys().index(key) #saves the index of the key the user is accessing            
+            
             #allows user to choose which part of their records to access
             level=4
-            prompt=('What are you deleting')
-            sub_sub_query=input_check.check(level,prompt)
+            prompt=('What are you viewing')
+            sub_query=input_check.check(level,prompt)
             
             #---------------------------------------#            
-            if sub_query=='inventory':
-                if Inventory.inventory.name==[]:
+            if sub_query=='summary':
+                if Inventory.inventory_record[key].name==[]:
                     print 'Your inventory is empty. Add some items!'
                     pass                
                 else:
-                    Inventory.inventory.view_inventory(a)
+                    Inventory.inventory_record[key].view_inventory()
             #---------------------------------------#
             elif sub_query=='items':
-                if Inventory.inventory.name==[]:
+                if Inventory.inventory_record[key].name==[]:
                     print 'Your inventory is empty. Add some items!'
                     pass                
                 else:
-                    Inventory.inventory.view_item(a)
+                    Inventory.inventory_record[key].view_item()
             #---------------------------------------#
             elif sub_query=='done':
                 pass
 
         #Save & Exit
         ######################################################################
-        if query=='save & exit':
+        elif query=='save & exit':
             #allows user to choose which part of their records to access
             level=1
             prompt=('Pick an option')
