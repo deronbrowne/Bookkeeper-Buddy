@@ -6,22 +6,24 @@ project_total=[]
 #record hourly rate to enable user to pay himself absed on hours worked
 hourly_rate=float(raw_input('What is your hourly rate? '))
 import input_check
+
 class my_projects:
-    #lists to record information about the items from the inventory being used in a project
-    items=[]
-    item_cost=[]
-    item_count=[]
-    item_subtotal=[]
-    #lists to record information about the overhead costs associated with this projects    
-    overheads=[]
-    overhead_cost=[]
-    #lists to record information for paying yourself   
-    day=[]
-    time=[]
-    salary=[]
-    #lists to record information about the profit
-    percent_profit=[]
-    profit=[]
+    def __init__(self):
+        #lists to record information about the items from the inventory being used in a project
+        self.items=[]
+        self.item_cost=[]
+        self.item_count=[]
+        self.item_subtotal=[]
+        #lists to record information about the overhead costs associated with this projects    
+        self.overheads=[]
+        self.overhead_cost=[]
+        #lists to record information for paying yourself   
+        self.day=[]
+        self.time=[]
+        self.salary=[]
+        #lists to record information about the profit
+        self.percent_profit=[]
+        self.profit=[]
     
 #####################################################################################
 #handling project items
@@ -53,11 +55,17 @@ class my_projects:
     def delete_items(self):
         delete_another='Yes'
         while delete_another=='Yes':#allows user to delete multiple items
-            level=10
-            prompt= 'Which item would you like to delete?'
-            a=input_check.check(level,prompt)
+            print '\n'
+            print '\n'.join(self.items)
+            b=str.lower(raw_input('Which item would you like to delete?\n'
+                                        '\n'))
+            while b not in self.items:
+                print "Sorry, that isn't a valid choice. Try again."
+                print '\n'.join(self.items)
+                print '\n'
+                b=str.lower(raw_input()) 
             
-            x=self.items.index(a) #grab index and show user what is about to be deleted           
+            x=self.items.index(b) #grab index and show user what is about to be deleted           
             print self.items[x]
             print self.item_cost[x]
             print self.item_count[x]
@@ -116,11 +124,17 @@ class my_projects:
     def delete_overhead(self):
         delete_another='Yes'
         while delete_another=='Yes':#allows user to delete multiple items
-            level=11
-            prompt= 'Which overhead would you like to delete?'
-            a=input_check.check(level,prompt)
+            print '\n'
+            print '\n'.join(self.overheads)
+            b=str.lower(raw_input('Which overhead would you like to delete?\n'
+                                        '\n'))
+            while b not in self.overheads:
+                print "Sorry, that isn't a valid choice. Try again."
+                print '\n'.join(self.overheads)
+                print '\n'
+                b=str.lower(raw_input()) 
 
-            x=self.overheads.index(a)
+            x=self.overheads.index(b)
             print self.overheads[x]
             print self.overhead_cost[x]
             print '\n'
@@ -166,11 +180,17 @@ class my_projects:
         delete_another='Yes'
         while delete_another=='Yes':#allows user to delete multiple items
         
-            level=12
-            prompt= 'Which date would you like to delete?'
-            choice=input_check.check(level,prompt)
-            x=self.day.index(choice)
-        
+            print '\n'
+            print '\n'.join(self.day)
+            b=str.lower(raw_input('What would you like to view?\n'
+                                        '\n'))
+            while b not in self.day:
+                print "Sorry, that isn't a valid choice. Try again."
+                print '\n'.join(self.day)
+                print '\n'
+                b=str.lower(raw_input())
+                
+            x=self.day.index(b)
             print self.day[x]
             print self.time[x]
             print self.salary[x]
