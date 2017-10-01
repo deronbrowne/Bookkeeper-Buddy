@@ -2,6 +2,27 @@ state='on' #'state' is supposed to represent the app/program being tuned on or a
 print '\n'
 print 'Welcome to "Bookkeeper Buddy"!'
 import input_check
+import Inventory
+import My_Projects
+
+#import pprint, pickle
+#
+#pkl_file = open('data.pkl', 'rb')
+#
+#Inventory.inventory_record = pickle.load(pkl_file)
+#pprint.pprint(Inventory.inventory_record)
+#
+#My_Projects.projects = pickle.load(pkl_file)
+#pprint.pprint(My_Projects.projects)
+#
+#My_Projects.instances = pickle.load(pkl_file)
+#pprint.pprint(My_Projects.instances)
+#
+#My_Projects.project_total = pickle.load(pkl_file)
+#pprint.pprint(My_Projects.project_total)
+#
+#pkl_file.close()
+
 
 while state=='on':
     #allows user to choose which part of their records to access
@@ -13,7 +34,6 @@ while state=='on':
 # Inventory actions
 ###############################################################################
     while action=='inventory':
-        import Inventory
         #allows user to choose which part of their records to access
         level=2
         prompt=('What would you like to do')
@@ -122,7 +142,6 @@ while state=='on':
 # Project actions
 ###############################################################################   
     while action=='projects':
-        import My_Projects
         #ask user what he'd like to do. Choose from the options
         level=2
         prompt=('What would you like to do')
@@ -262,6 +281,18 @@ while state=='on':
         print 'Coming soon!'
         pass
         
-    if action=='quit':
+    if action=='quit':       
         print 'Goodbye'
         state='off'
+
+#import pickle
+#
+#output = open('data.pkl', 'wb')
+#
+## Pickle dictionary using protocol 0.
+#pickle.dump(Inventory.inventory_record, output)
+#pickle.dump(My_Projects.projects, output, -1)
+#pickle.dump(My_Projects.instances, output, -1)
+#pickle.dump(My_Projects.project_total, output, -1)
+#
+#output.close()
