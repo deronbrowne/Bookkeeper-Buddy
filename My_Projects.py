@@ -3,12 +3,17 @@
 projects=[]
 instances=[]
 project_total=[]
-#record hourly rate to enable user to pay himself absed on hours worked
-hourly_rate=float(raw_input('What is your hourly rate? '))
 import input_check
 
 class my_projects:
     def __init__(self):
+        #record hourly rate to enable user to pay himself absed on hours worked
+        self.hourly_rate=30
+        level=7
+        prompt= 'Your default hourly rate has been set to $30/hr. Would you like to change it?'
+        add_another=input_check.check(level,prompt)
+        if add_another=='yes':
+            self.hourly_rate=raw_input('What would you like to change it to?')
         #lists to record information about the items from the inventory being used in a project
         self.items=[]
         self.item_cost=[]
