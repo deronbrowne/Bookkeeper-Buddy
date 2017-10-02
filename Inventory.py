@@ -64,9 +64,9 @@ class inventory:
             x=self.name.index(b) #user chooses an option; index recorded              
             #prints all the information associated with an item of the user's choice                
             print 'Name: ' + self.name[x]
-            print 'Cost: ' + str(self.cost_per_piece[x])
+            print 'Cost: $' + str(self.cost_per_piece[x])
             print 'Quantity: ' + str(self.num_pieces[x])
-            print 'Subtotal: ' + str(self.subtotals[x])
+            print 'Subtotal: $' + str(self.subtotals[x])
             level=7
             prompt= 'Would you like to view another item?'
             check=input_check.check(level,prompt) 
@@ -76,7 +76,7 @@ class inventory:
         while check=='yes': #while the user wants to keep editing, keep executing the edit code
             print '\n'
             print '\n'.join(self.name)
-            b=str.lower(raw_input('What would you like to view?\n'
+            b=str.lower(raw_input('What would you like to edit?\n'
                                         '\n'))
             while b not in self.name:
                 print "Sorry, that isn't a valid choice. Try again."
@@ -90,9 +90,9 @@ class inventory:
                 #print the information that is about to be changed
                 print '\n'
                 print 'Name: '+ str(self.name[x])
-                print 'Quantity: '+ str(self.cost_per_piece[x])
-                print 'Price: '+ str(self.num_pieces[x])
-                print 'Subtotal: '+ str(self.subtotals[x])
+                print 'Quantity: '+ str(self.num_pieces[x])
+                print 'Price: $'+ str(self.cost_per_piece[x])
+                print 'Subtotal: $'+ str(self.subtotals[x])
                 
                 
                 level=9
@@ -117,11 +117,20 @@ class inventory:
     
                                            
                 level=7
-                prompt= 'Are you done wih this item?'
+                prompt= 'Are you done with this item?'
                 done=input_check.check(level,prompt)     
 
+            if done=='yes':                            
+                x=self.name.index(b) #index recorded
+                #print the information that is about to be changed
+                print '\n'
+                print 'Name: '+ str(self.name[x])
+                print 'Quantity: '+ str(self.num_pieces[x])
+                print 'Price: $'+ str(self.cost_per_piece[x])
+                print 'Subtotal: $'+ str(self.subtotals[x])
+                
             level=7
-            prompt= 'Would you like to delete another item?'
+            prompt= 'Would you like to edit another item?'
             check=input_check.check(level,prompt)                       
     
     def delete_item(self):
@@ -140,9 +149,9 @@ class inventory:
             #grab index of item to be deleted; print and check before deleting
             x=self.name.index(b) 
             print 'Name: ' + self.name[x]
-            print 'Cost: ' + str(self.cost_per_piece[x])
+            print 'Cost: $' + str(self.cost_per_piece[x])
             print 'Quantity: ' + str(self.num_pieces[x])
-            print 'Subtotal: ' + str(self.subtotals[x])
+            print 'Subtotal: $' + str(self.subtotals[x])
             print '\n'
             
             level=7
@@ -157,9 +166,9 @@ class inventory:
                 
             elif check=='no': #shows user that nothing has been changed
                 print 'Name: ' + self.name[x]
-                print 'Cost: ' + str(self.cost_per_piece[x])
+                print 'Cost: $' + str(self.cost_per_piece[x])
                 print 'Quantity: ' + str(self.num_pieces[x])
-                print 'Subtotal: ' + str(self.subtotals[x])
+                print 'Subtotal: $' + str(self.subtotals[x])
                 print '\n'                
 
             level=7
