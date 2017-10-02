@@ -1,7 +1,7 @@
 #initialize lists to keep track of all the projects, their totals
 #and to track which inctances of the class "my_projects correspond to each title
-projects={}
 import input_check
+projects={}
 
 class my_projects:
     def __init__(self):
@@ -17,7 +17,7 @@ class my_projects:
         self.item_cost=[]
         self.item_count=[]
         self.item_subtotal=[]
-        #lists to record information about the overhead costs associated with this projects    
+        #lists to record information about the overhead costs associated with this project    
         self.overheads=[]
         self.overhead_cost=[]
         #lists to record information for paying yourself   
@@ -26,6 +26,11 @@ class my_projects:
         self.salary=[]
         #lists to record information about the profit
         self.percent_profit=20
+        level=7
+        prompt= 'Your default percentage profit has been set to 20%. Would you like to change it?'
+        add_another=input_check.check(level,prompt)
+        if add_another=='yes':
+            self.hourly_rate=raw_input('What would you like to change it to?')        
     
 #####################################################################################
 #handling project items
