@@ -37,14 +37,14 @@ def check(level,prompt):
     elif level==14:
         options=n
         
-    print '\n'
-    print '\n'.join(options)
-    choice=str.lower(raw_input(prompt + '\n'
+    print ('\n')
+    print ('\n'.join(options))
+    choice=str.lower(input(prompt + '\n'
                                 '\n'))
     while choice not in options:
-        print "Sorry, that isn't a valid choice. Try again."
-        print '\n'.join(options)
-        print '\n'
-        choice=str.lower(raw_input())
+        print ("Sorry, that isn't a valid choice. Try again.")
+        print ('\n'.join(options))
+        print ('\n')
+        choice=str.lower(input())
     
     return choice

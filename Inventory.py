@@ -41,32 +41,32 @@ class inventory:
     def view_inventory(self):   
         x=len(self.name)
         for i in xrange(0,x):
-            print 'Name: '      + self.name[i]
-            print 'Cost: $'      + str(self.cost_per_piece[i])
-            print 'Quantity: '  + str(self.num_pieces[i])
-            print 'Subtotal: $'  + str(self.subtotals[i])
-            print '\n'
-        print 'Inventory value = $'+str(sum(self.subtotals)) #total value of all the items in the inventory       
+            print ('Name: '      + self.name[i])
+            print ('Cost: $'      + str(self.cost_per_piece[i]))
+            print ('Quantity: '  + str(self.num_pieces[i]))
+            print ('Subtotal: $'  + str(self.subtotals[i]))
+            print ('\n')
+        print ('Inventory value = $'+str(sum(self.subtotals))) #total value of all the items in the inventory       
 
     def view_item(self): 
         check='yes'
         while check=='yes':
-            print '\n'
-            print '\n'.join(self.name)
+            print ('\n')
+            print ('\n'.join(self.name))
             b=str.lower(raw_input('What would you like to view?\n'
                                         '\n'))
             while b not in self.name:
-                print "Sorry, that isn't a valid choice. Try again."
-                print '\n'.join(self.name)
-                print '\n'
+                print ("Sorry, that isn't a valid choice. Try again.")
+                print ('\n'.join(self.name))
+                print ('\n')
                 b=str.lower(raw_input())            
 
             x=self.name.index(b) #user chooses an option; index recorded              
             #prints all the information associated with an item of the user's choice                
-            print 'Name: ' + self.name[x]
-            print 'Cost: $' + str(self.cost_per_piece[x])
-            print 'Quantity: ' + str(self.num_pieces[x])
-            print 'Subtotal: $' + str(self.subtotals[x])
+            print ('Name: ' + self.name[x])
+            print ('Cost: $' + str(self.cost_per_piece[x]))
+            print ('Quantity: ' + str(self.num_pieces[x]))
+            print ('Subtotal: $' + str(self.subtotals[x]))
             level=7
             prompt= 'Would you like to view another item?'
             check=input_check.check(level,prompt) 
@@ -74,25 +74,25 @@ class inventory:
     def edit_item(self):
         check='yes'
         while check=='yes': #while the user wants to keep editing, keep executing the edit code
-            print '\n'
-            print '\n'.join(self.name)
+            print ('\n')
+            print ('\n'.join(self.name))
             b=str.lower(raw_input('What would you like to edit?\n'
                                         '\n'))
             while b not in self.name:
-                print "Sorry, that isn't a valid choice. Try again."
-                print '\n'.join(self.name)
-                print '\n'
+                print ("Sorry, that isn't a valid choice. Try again.")
+                print ('\n'.join(self.name))
+                print ('\n')
                 b=str.lower(raw_input()) 
             
             done='no'
             while done=='no':                            
                 x=self.name.index(b) #index recorded
                 #print the information that is about to be changed
-                print '\n'
-                print 'Name: '+ str(self.name[x])
-                print 'Quantity: '+ str(self.num_pieces[x])
-                print 'Price: $'+ str(self.cost_per_piece[x])
-                print 'Subtotal: $'+ str(self.subtotals[x])
+                print ('\n')
+                print ('Name: '+ str(self.name[x]))
+                print ('Quantity: '+ str(self.num_pieces[x]))
+                print ('Price: $'+ str(self.cost_per_piece[x]))
+                print ('Subtotal: $'+ str(self.subtotals[x]))
                 
                 
                 level=9
@@ -123,11 +123,11 @@ class inventory:
             if done=='yes':                            
                 x=self.name.index(b) #index recorded
                 #print the information that is about to be changed
-                print '\n'
-                print 'Name: '+ str(self.name[x])
-                print 'Quantity: '+ str(self.num_pieces[x])
-                print 'Price: $'+ str(self.cost_per_piece[x])
-                print 'Subtotal: $'+ str(self.subtotals[x])
+                print ('\n')
+                print ('Name: '+ str(self.name[x]))
+                print ('Quantity: '+ str(self.num_pieces[x]))
+                print ('Price: $'+ str(self.cost_per_piece[x]))
+                print ('Subtotal: $'+ str(self.subtotals[x]))
                 
             level=7
             prompt= 'Would you like to edit another item?'
@@ -136,23 +136,23 @@ class inventory:
     def delete_item(self):
         check='yes'
         while check=='yes':
-            print '\n'
-            print '\n'.join(self.name)
+            print ('\n')
+            print ('\n'.join(self.name))
             b=str.lower(raw_input('What would you like to view?\n'
                                         '\n'))
             while b not in self.name:
-                print "Sorry, that isn't a valid choice. Try again."
-                print '\n'.join(self.name)
-                print '\n'
+                print ("Sorry, that isn't a valid choice. Try again.")
+                print ('\n'.join(self.name))
+                print ('\n')
                 b=str.lower(raw_input()) 
                              
             #grab index of item to be deleted; print and check before deleting
             x=self.name.index(b) 
-            print 'Name: ' + self.name[x]
-            print 'Cost: $' + str(self.cost_per_piece[x])
-            print 'Quantity: ' + str(self.num_pieces[x])
-            print 'Subtotal: $' + str(self.subtotals[x])
-            print '\n'
+            print ('Name: ' + self.name[x])
+            print ('Cost: $' + str(self.cost_per_piece[x]))
+            print ('Quantity: ' + str(self.num_pieces[x]))
+            print ('Subtotal: $' + str(self.subtotals[x]))
+            print ('\n')
             
             level=7
             prompt= 'Are you sure?'
@@ -165,11 +165,11 @@ class inventory:
                 del self.subtotals[x]
                 
             elif check=='no': #shows user that nothing has been changed
-                print 'Name: ' + self.name[x]
-                print 'Cost: $' + str(self.cost_per_piece[x])
-                print 'Quantity: ' + str(self.num_pieces[x])
-                print 'Subtotal: $' + str(self.subtotals[x])
-                print '\n'                
+                print ('Name: ' + self.name[x])
+                print ('Cost: $' + str(self.cost_per_piece[x]))
+                print ('Quantity: ' + str(self.num_pieces[x]))
+                print ('Subtotal: $' + str(self.subtotals[x]))
+                print ('\n')                
 
             level=7
             prompt= 'Would you like to keep deleting?'
@@ -188,4 +188,4 @@ class inventory:
         
         
     def get_inventory_value(self): #used if user wants to see the value of his inventory
-        print sum(self.subtotals)
+        print (sum(self.subtotals))

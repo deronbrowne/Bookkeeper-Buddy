@@ -1,6 +1,6 @@
 state='on' #'state' is supposed to represent the app/program being tuned on or accessed
-print '\n'
-print 'Welcome to "Bookkeeper Buddy"!'
+print ('\n')
+print ('Welcome to "Bookkeeper Buddy"!')
 import input_check
 import Inventory
 import My_Projects
@@ -36,7 +36,7 @@ while state=='on':
         #Create
         ##################################################################
         if query=='create': #as long as user wants to create an inventory
-            new_name=raw_input('Name this inventory! \n'
+            new_name=input('Name this inventory! \n'
                                             '\n')
             Inventory.inventory_record[new_name]=Inventory.inventory() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name       
             names=Inventory.inventory_record.keys()
@@ -74,7 +74,7 @@ while state=='on':
                 
                 if sub_sub_query=='items':
                     if Inventory.inventory_record[key].name==[]:
-                        print 'Your inventory is empty. Add some items!'
+                        print ('Your inventory is empty. Add some items!')
                         pass                
                     else:                    
                         Inventory.inventory_record[key].delete_item()
@@ -107,14 +107,14 @@ while state=='on':
             #---------------------------------------#            
             if sub_query=='summary':
                 if Inventory.inventory_record[key].name==[]:
-                    print 'Your inventory is empty. Add some items!'
+                    print ('Your inventory is empty. Add some items!')
                     pass                
                 else:
                     Inventory.inventory_record[key].view_inventory()
             #---------------------------------------#
             elif sub_query=='items':
                 if Inventory.inventory_record[key].name==[]:
-                    print 'Your inventory is empty. Add some items!'
+                    print ('Your inventory is empty. Add some items!')
                     pass                
                 else:
                     Inventory.inventory_record[key].view_item()
@@ -144,7 +144,7 @@ while state=='on':
         #Create
         #######################################################################
         if query=='create':# if user wants to create a project
-            new_name=raw_input('Name this inventory! \n'
+            new_name=input('Name this inventory! \n'
                                             '\n')        
             My_Projects.projects[new_name]=My_Projects.my_projects() #initialize instance; want to allow user to create more than one inventory...need to assign user input to instance name       
             names=My_Projects.my_projects.keys()
@@ -264,19 +264,19 @@ while state=='on':
         
                         
     while action=='Restock':
-        print 'Coming soon!'
+        print ('Coming soon!')
         pass
     
     while action=='Set Goal':
-        print 'Coming soon!'
+        print ('Coming soon!')
         pass
     
     while action=='Sell item':
-        print 'Coming soon!'
+        print ('Coming soon!')
         pass
         
     if action=='quit':       
-        print 'Goodbye'
+        print ('Goodbye')
         state='off'
 
 import pickle
